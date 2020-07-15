@@ -30,58 +30,47 @@ Function Get-DateExtended {
 .OUTPUTS
    A PSObject containing extended values for the date. 
 #> 
-   [CmdletBinding(DefaultParameterSetName = 'Default')]
+   [CmdletBinding()]
    [OutputType('DateTimeExtended')]
    param(
-      [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, ParameterSetName = "Default")]
+      [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true)]
       [Alias("LastWriteTime")]
       [DateTime]$Date = [DateTime]::Now,
         
-      [Parameter(ParameterSetName = "Default")]
+      [Parameter()]
       [switch] $FromUnixTime,
 
-      [Parameter(ParameterSetName = "Default")]
+      [Parameter()]
       [ValidateRange(1, 9999)]
       [int] $Year,
 
-      [Parameter(ParameterSetName = "Default")]
+      [Parameter()]
       [ValidateRange(1, 12)]
       [int] $Month,
 
-      [Parameter(ParameterSetName = "Default")]
+      [Parameter()]
       [ValidateRange(1, 31)]
       [int] $Day,
 
-      [Parameter(ParameterSetName = "Default")]
+      [Parameter()]
       [ValidateRange(0, 23)]
       [int] $Hour,
 
-      [Parameter(ParameterSetName = "Default")]
+      [Parameter()]
       [ValidateRange(0, 59)]
       [int] $Minute,
 
-      [Parameter(ParameterSetName = "Default")]
+      [Parameter()]
       [ValidateRange(0, 59)]
       [int] $Second,
 
-      [Parameter(ParameterSetName = "Default")]
+      [Parameter()]
       [ValidateRange(0, 999)]
       [int] $Millisecond,
 
-      [Parameter(ParameterSetName = "Default")]
+      [Parameter()]
       [ValidateSet('Date', 'Time', 'DateTime')]
-      [string] $DisplayHint,
-
-      [Parameter(ParameterSetName = "UFormat")]
-      [ValidateNotNullOrEmpty]
-      [string] $UFormat,
-
-      [Parameter(ParameterSetName = "net")]
-      [ValidateSet("FileDate", "FileDateUniversal", "FileDateTime", "FileDateTimeUniversal")]
-      [string] $Format,
-
-      [Parameter(ParameterSetName = "net")]
-      [switch] $AsUTC
+      [string] $DisplayHint
    )
    
    

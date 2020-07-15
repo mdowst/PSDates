@@ -12,11 +12,11 @@ Function Get-DateFormats {
 .EXAMPLE
    Get-DateFormats
 
-   Gets formated date and time information based on the current time
+   Gets formatted date and time information based on the current time
 .EXAMPLE
    Get-DateFormats -Date "11/17/2017"
 
-   Gets formated date and time information for a specific date
+   Gets formatted date and time information for a specific date
 
 .OUTPUTS
    A PSObject containing the diffent values for the datetime formats. 

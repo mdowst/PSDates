@@ -21,22 +21,10 @@ Function Convert-TimeZone {
 .EXAMPLE
     Convert-TimeZone -ToTimeZone "GMT Standard Time"
 
-    FromDateTime : 11/11/2017 3:54:12 PM
-    FromTimeZone : Central Standard Time
-    ToDateTime   : 11/11/2017 9:54:12 PM
-    ToTimeZone   : GMT Standard Time
-    Offset       : 06:00:00
-
     Convert the local system time to GMT Standard Time
     
 .EXAMPLE
    Convert-TimeZone -date '11/17/2017 12:34 AM' -FromTimeZone "China Standard Time" -ToTimeZone "US Mountain Standard Time"
-
-   FromDateTime : 11/17/2017 12:34:00 AM
-   FromTimeZone : China Standard Time
-   ToDateTime   : 11/16/2017 9:34:00 AM
-   ToTimeZone   : US Mountain Standard Time
-   Offset       : -15:00:00
 
    Converts the date and time 11/17/2017 12:34 AM from 'China Standard Time' to 'US Mountain Standard Time'
    

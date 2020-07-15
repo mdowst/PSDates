@@ -10,6 +10,9 @@ Install-Module PSNotes
 
 # Examples
 
+* [Get-DateExtended](#Get-DateExtended)
+* [Get-DateFormats](#Get-DateFormats)
+
 ## Get-DateExtended 
 Gets common extended date values that are not included by default with the Get-Date cmdlet. It expects all the same parameters as the standard Get-Date cmdlet.
 

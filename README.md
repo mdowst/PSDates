@@ -10,17 +10,17 @@ Install-Module PSDates
 
 # Examples
 
-* [Get-DateExtended](Get-DateExtended)
-* [Get-DateFormats](Get-DateFormats)
-* [Get-PatchTuesday](Get-PatchTuesday)
-* [Test-CrontabSchedule](Test-CrontabSchedule)
-* [Get-CronNextOccurrence](Get-CronNextOccurrence)
-* [Find-TimeZone](Find-TimeZone)
-* [Convert-TimeZone](Convert-TimeZone)
-* [ConvertFrom-UnixTime](ConvertFrom-UnixTime)
-* [ConvertTo-UnixTime](ConvertTo-UnixTime)
-* [ConvertFrom-WmiDateTime](ConvertFrom-WmiDateTime)
-* [ConvertTo-WmiDateTime](ConvertTo-WmiDateTime)
+* [Get-DateExtended](#Get-DateExtended)
+* [Get-DateFormats](#Get-DateFormats)
+* [Get-PatchTuesday](#Get-PatchTuesday)
+* [Test-CrontabSchedule](#Test-CrontabSchedule)
+* [Get-CronNextOccurrence](#Get-CronNextOccurrence)
+* [Find-TimeZone](#Find-TimeZone)
+* [Convert-TimeZone](#Convert-TimeZone)
+* [ConvertFrom-UnixTime](#ConvertFrom-UnixTime)
+* [ConvertTo-UnixTime](#ConvertTo-UnixTime)
+* [ConvertFrom-WmiDateTime](#ConvertFrom-WmiDateTime)
+* [ConvertTo-WmiDateTime](#ConvertTo-WmiDateTime)
 
 ## Get-DateExtended 
 Gets common extended date values that are not included by default with the Get-Date cmdlet. It expects all the same parameters as the standard Get-Date cmdlet.

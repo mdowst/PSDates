@@ -2,16 +2,25 @@
 
 PSDates provides you all the tools you need when working with dates and times in PowerShell. It contains function to help you find specific date formats, get certain dates based on other dates (first/last day of the month or year, patch Tuesday, etc). I also has functions for working with timezones, unix time, WMI time, crontabs. 
 
-# Install Instructions
-PowerShell v5+ and PowerShell Core v6+
+# Installation
+
 ```powershell
-Install-Module PSNotes
+Install-Module PSDates
 ```
 
 # Examples
 
-* [Get-DateExtended](#Get-DateExtended)
-* [Get-DateFormats](#Get-DateFormats)
+* [Get-DateExtended](Get-DateExtended)
+* [Get-DateFormats](Get-DateFormats)
+* [Get-PatchTuesday](Get-PatchTuesday)
+* [Test-CrontabSchedule](Test-CrontabSchedule)
+* [Get-CronNextOccurrence](Get-CronNextOccurrence)
+* [Find-TimeZone](Find-TimeZone)
+* [Convert-TimeZone](Convert-TimeZone)
+* [ConvertFrom-UnixTime](ConvertFrom-UnixTime)
+* [ConvertTo-UnixTime](ConvertTo-UnixTime)
+* [ConvertFrom-WmiDateTime](ConvertFrom-WmiDateTime)
+* [ConvertTo-WmiDateTime](ConvertTo-WmiDateTime)
 
 ## Get-DateExtended 
 Gets common extended date values that are not included by default with the Get-Date cmdlet. It expects all the same parameters as the standard Get-Date cmdlet.
@@ -53,7 +62,7 @@ Ticks          : 636464736000000000
 TimeOfDay      : 00:00:00
 Year           : 2017
 ```
-
+[top](#examples)
 ## Get-DateFormats 
 Get-DateFormats returns the date and time values into multiple different common formats. All dates are based on the date passed. If no date is passed in the current date and time are used.
 
@@ -98,7 +107,7 @@ Year                      : 2020
 YearMonth                 : July 2020
 YearQuater                : 202003
 ```
-
+[top](#examples)
 ## Get-PatchTuesday
 Get-PatchTuesday allows you to pass a date, or a month/year combination to find the second Tuesday (aka Patch Tuesday) of any month.
 
@@ -129,7 +138,7 @@ PS:> Get-PatchTuesday -Month 4
 
 Tuesday, April 14, 2020 12:00:00 AM
 ```
-
+[top](#examples)
 ## Test-CrontabSchedule
 This function attempts to parse a crontab string to ensure it is valid.
 
@@ -150,7 +159,7 @@ Schedule    Valid ErrorMsg
 --------    ----- --------                                                                                                            
 0 17 * 13 * False 13 is higher than the maximum allowable value for the [Month] field. Value must be between 1 and 12 (all inclusive).
 ```
-
+[top](#examples)
 ## Get-CronNextOccurrence
 This function will either return the next occurrence, or if an end date is supplied, it will return 
 all the occurrences between the start and end date.
@@ -179,7 +188,7 @@ Monday, December 14, 2020 5:00:00 PM
 Tuesday, December 15, 2020 5:00:00 PM
 Wednesday, December 16, 2020 5:00:00 PM
 ```
-
+[top](#examples)
 ## Find-TimeZone
 This function will return the information for the system time zones. You can search by name and/or hour offsets. 
 You can also return the local time zone.
@@ -240,13 +249,13 @@ DaylightName               : Canada Central Daylight Time
 BaseUtcOffset              : -06:00:00
 SupportsDaylightSavingTime : False
 ```
-
+[top](#examples)
 ## Convert-TimeZone
 This function will allows you to pass a date to convert from one time zone to another. 
 If no date is specified the local time is used. If no FromTimeZone is passed then the 
 local time zone is used.
 
-If you don't know the time zone ID you can use the Find-TimeZone cmdlet.
+If you don't know the time zone ID you can use the [Find-TimeZone](Find-TimeZone) cmdlet.
 
 ### Example 1 : FromDateTime : 11/11/2017 3:54:12 PM
 ```powershell
@@ -269,7 +278,7 @@ ToDateTime   : 11/16/2017 9:34:00 AM
 ToTimeZone   : US Mountain Standard Time
 Offset       : -15:00:00
 ```
-
+[top](#examples)
 ## ConvertFrom-UnixTime
 This function will return the datetime based on the unix epoch time.
 
@@ -279,7 +288,7 @@ PS:> ConvertFrom-UnixTime -UnixTime 1509512400
 
 Wednesday, November 1, 2017 12:00:00 AM
 ```
-
+[top](#examples)
 ## ConvertTo-UnixTime
 This function will return the unix time based on the unix epoch time. If no date is passed in the current date and time is used.
 
@@ -296,7 +305,7 @@ PS:> ConvertTo-UnixTime -date "11/17/2017"
 
 1510898400
 ```
-
+[top](#examples)
 ## ConvertFrom-WmiDateTime
 This function will return the datetime based on a WMI datetime string.
 
@@ -306,7 +315,7 @@ PS:> ConvertFrom-WmiDateTime -WmiTime '20190912173652.000000-300'
 
 Thursday, September 12, 2019 5:36:52 PM
 ```
-
+[top](#examples)
 ## ConvertTo-WmiDateTime
 This function will return the WMI datetime string based on a datetime passed.
 

@@ -15,6 +15,7 @@ class DateTimeFormats {
     [string]   $ISO8601
     [string]   $ISO8601UTC
     [string]   $LongDate
+    [string]   $LongDateNoDay
     [string]   $LongTime
     [int32]    $Month
     [string]   $MonthAbrv

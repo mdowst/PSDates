@@ -12,7 +12,7 @@
 RootModule = '.\PSDates.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.0.1.2'
+ModuleVersion = '1.0.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -56,11 +56,10 @@ ProcessorArchitecture = 'Amd64'
 # RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
-# RequiredAssemblies = @()
+RequiredAssemblies = @('.\Resources\NCrontab.dll')
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = '.\Resources\DateTimeFormats.ps1', 
-               '.\Resources\DateTimeExtended.ps1'
+# ScriptsToProcess = '.\Classes\DateTimeFormats.ps1', '.\Classes\DateTimeExtended.ps1'
 
 # Type files (.ps1xml) to be loaded when importing this module
 # TypesToProcess = @()
@@ -72,7 +71,7 @@ FormatsToProcess = '.\Resources\DateTimeExtensions.format.ps1xml'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = '*'
+FunctionsToExport = @('Convert-TimeZone','ConvertFrom-UnixTime','ConvertFrom-WmiDateTime','ConvertTo-UnixTime','ConvertTo-WmiDateTime','Find-TimeZone','Get-CronNextOccurrence','Get-DateExtended','Get-DateFormat','Get-Easter','Get-PatchTuesday','New-Duration','Test-CrontabSchedule')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
@@ -81,7 +80,7 @@ CmdletsToExport = @()
 VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = '*'
+AliasesToExport = 'Get-DateFormats'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -132,4 +131,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-

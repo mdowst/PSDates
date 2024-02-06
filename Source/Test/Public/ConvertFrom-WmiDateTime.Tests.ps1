@@ -7,6 +7,6 @@ BeforeAll {
 
 Describe 'ConvertFrom-WmiDateTime Tests' {
     It 'ConvertFrom-WmiDateTime Test' {
-        ConvertFrom-WmiDateTime -WmiTime '20190912173652.000000-300' | Should -Be (Get-Date '2019-09-12T17:36:52.000')
+        ConvertFrom-WmiDateTime -WmiTime '20190912173652.000000-000' | Should -Be (Get-Date '2019-09-12T17:36:52.000Z').ToLocalTime()
     }
 }

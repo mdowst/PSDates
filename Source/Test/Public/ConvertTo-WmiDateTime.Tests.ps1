@@ -7,6 +7,6 @@ BeforeAll {
 
 Describe 'ConvertTo-WmiDateTime Tests' {
     It 'ConvertTo-WmiDateTime Test' {
-        ConvertTo-WmiDateTime -Date '06/25/2019 16:17' | Should -Be '20190625161700.000000-300'
+        ConvertTo-WmiDateTime -Date (Get-Date '2017-06-25T16:17:00.000Z').ToUniversalTime() | Should -Be '20170625161700.000000+000'
     }
 }

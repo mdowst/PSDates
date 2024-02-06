@@ -24,5 +24,5 @@ Function ConvertFrom-UnixTime {
       [double]$UnixTime
    )
 
-   [timezone]::CurrentTimeZone.ToLocalTime(([datetime]'1/1/1970').AddSeconds($UnixTime))
+   (Get-Date '1970-01-01T00:00:00.000Z').ToUniversalTime().AddSeconds($UnixTime)
 }

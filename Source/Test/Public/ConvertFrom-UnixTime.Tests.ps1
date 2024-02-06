@@ -7,6 +7,6 @@ BeforeAll {
 
 Describe 'ConvertFrom-UnixTime Tests' {
     It 'ConvertFrom-UnixTime Test' {
-        ConvertFrom-UnixTime -UnixTime 1509512400 | Should -Be (Get-Date -Year 2017 -Month 11 -Date 1).Date
+        ConvertFrom-UnixTime -UnixTime 1510876800 | Should -Be (Get-Date '2017-11-17T00:00:00.000Z').ToUniversalTime()
     }
 }

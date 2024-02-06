@@ -257,7 +257,7 @@ Function ConvertFrom-UnixTime {
       [double]$UnixTime
    )
 
-   [timezone]::CurrentTimeZone.ToLocalTime(([datetime]'1/1/1970').AddSeconds($UnixTime))
+   (Get-Date '1970-01-01T00:00:00.000Z').ToUniversalTime().AddSeconds($UnixTime)
 }
 #EndRegion '.\Public\ConvertFrom-UnixTime.ps1' 29
 #Region '.\Public\ConvertFrom-WmiDateTime.ps1' -1
@@ -715,6 +715,43 @@ Function Get-Easter {
     [datetime]::new($year, $m, $d)
 }
 #EndRegion '.\Public\Get-Easter.ps1' 67
+#Region '.\Public\Get-HappyHour.ps1' -1
+
+Function Get-HappyHour {
+    [CmdletBinding()]
+    [OutputType([string])]
+    $now = Get-Date '16:30'
+
+    $untilHH = New-TimeSpan -Start $now -End (Get-Date '17:00')
+
+    if($untilHH.Hours -ne 0){
+
+    }
+
+    if ($hoursUntilHH -lt 0) {
+        Write-Output "Happy hour started $($hoursUntilHH * -1) hours ago!"
+    }
+    elseif ($hoursUntilHH -eq 0) {
+        Write-Output "Happy hour started $($now.Minute) minutes ago!"
+    }
+    else {
+        if ($hoursUntilHH -eq 1) {
+            Write-Output "Happy hour starts in $(60 - $now.Minute) minutes!"
+        }
+        else {
+            Write-Output "Happy hour starts in $($hoursUntilHH) hours!"
+        }
+
+        Write-Output "It is currently happy hour in..."
+        $local = [System.TimeZoneInfo]::Local
+        $offsetHoursUntilHH = $local.BaseUtcOffset.Hours + $hoursUntilHH
+        $TimeZones = [System.TimeZoneInfo]::GetSystemTimeZones()
+        $TimeZones | Where-Object { $_.BaseUtcOffset.Hours -eq $offsetHoursUntilHH } | Foreach-Object {
+            "  - $($_.DisplayName.Substring($_.DisplayName.IndexOf(' ')).Trim())"
+        }
+    }
+}
+#EndRegion '.\Public\Get-HappyHour.ps1' 35
 #Region '.\Public\Get-PatchTuesday.ps1' -1
 
 Function Get-PatchTuesday {

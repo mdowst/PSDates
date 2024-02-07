@@ -12,7 +12,7 @@
 RootModule = '.\PSDates.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.0.1.2'
+ModuleVersion = '1.0.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -27,12 +27,10 @@ Author = 'Matthew Dowst'
 CompanyName = 'Dowst Labs'
 
 # Copyright statement for this module
-Copyright = '(c) 2020 Dowst Labs. All rights reserved.'
+Copyright = '(c) 2024 Dowst Labs. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'PSDates provides you all the tools you need when working with dates and times in PowerShell. ' +
-              'It contains function to help you find specific date formats, get certain dates based on other dates (first/last day of the month or year, patch Tuesday, etc). ' +
-              'I also has functions for working with timezones, unix time, WMI time, crontabs.'
+Description = 'PSDates provides you all the tools you need when working with dates and times in PowerShell. It contains function to help you find specific date formats, get certain dates based on other dates (first/last day of the month or year, patch Tuesday, etc). I also has functions for working with timezones, unix time, WMI time, crontabs.'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '2.0'
@@ -71,7 +69,7 @@ FormatsToProcess = '.\Resources\DateTimeExtensions.format.ps1xml'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = '*'
+FunctionsToExport = @('Convert-TimeZone','ConvertFrom-UnixTime','ConvertFrom-WmiDateTime','ConvertTo-UnixTime','ConvertTo-WmiDateTime','Find-TimeZone','Get-CronNextOccurrence','Get-DateExtended','Get-DateFormat','Get-Easter','Get-PatchTuesday','New-Duration','Test-CrontabSchedule')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
@@ -80,7 +78,7 @@ CmdletsToExport = @()
 VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = '*'
+AliasesToExport = 'Get-DateFormats'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -100,7 +98,7 @@ PrivateData = @{
         Tags = @('date','dates','datetime','time','cron','crontab','wmi','unix')
 
         # A URL to the license for this module.
-        LicenseUri = 'https://github.com/mdowst/PSDates/blob/master/LICENSE'
+        LicenseUri = 'https://github.com/mdowst/PSDates/blob/main/LICENSE'
 
         # A URL to the main website for this project.
         ProjectUri = 'https://github.com/mdowst/PSDates'
@@ -131,4 +129,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-

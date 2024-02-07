@@ -10,13 +10,13 @@ Install-Module PSDates
 
 # Examples
 
-* [Get-DateExtended](#Get-DateExtended)
+* [Get-DateExtended](docs\Convert-TimeZone.md)
 * [Get-DateFormats](#Get-DateFormats)
 * [Get-PatchTuesday](#Get-PatchTuesday)
 * [Test-CrontabSchedule](#Test-CrontabSchedule)
 * [Get-CronNextOccurrence](#Get-CronNextOccurrence)
 * [Find-TimeZone](#Find-TimeZone)
-* [Convert-TimeZone](#Convert-TimeZone)
+* [Convert-TimeZone](docs\Convert-TimeZone.md)
 * [ConvertFrom-UnixTime](#ConvertFrom-UnixTime)
 * [ConvertTo-UnixTime](#ConvertTo-UnixTime)
 * [ConvertFrom-WmiDateTime](#ConvertFrom-WmiDateTime)

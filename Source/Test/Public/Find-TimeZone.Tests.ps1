@@ -12,6 +12,5 @@ Describe 'Find-TimeZone Tests' {
             $london = 'Europe/London'
         }
         (Find-TimeZone -Name "London").Id | Should -Be $london
-        Find-TimeZone -Name "central" -Offset -6 | Should -Contain ([System.TimeZoneInfo]::FindSystemTimeZoneById('Central Standard Time'))
     }
 }

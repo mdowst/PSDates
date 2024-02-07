@@ -3,6 +3,7 @@ BeforeAll {
     $TopLevel = (Split-Path(Split-Path(Split-Path $PSScriptRoot)))
     $ModulePath = Get-ChildItem -Path (Join-Path $TopLevel 'Build\PSDates') -Filter 'PSDates.psd1' -Recurse | Select-Object -Last 1
     Import-Module $ModulePath.FullName -Force
+    [cultureinfo]::CurrentCulture = 'en-US'
 }
 
 Describe 'Get-DateFormat Tests' {

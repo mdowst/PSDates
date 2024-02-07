@@ -16,7 +16,7 @@ Install-Module PSDates
 * [Test-CrontabSchedule](#Test-CrontabSchedule)
 * [Get-CronNextOccurrence](#Get-CronNextOccurrence)
 * [Find-TimeZone](#Find-TimeZone)
-* [Convert-TimeZone](docs\Convert-TimeZone.md)
+* [Convert-TimeZone](docs/Convert-TimeZone.md)
 * [ConvertFrom-UnixTime](#ConvertFrom-UnixTime)
 * [ConvertTo-UnixTime](#ConvertTo-UnixTime)
 * [ConvertFrom-WmiDateTime](#ConvertFrom-WmiDateTime)

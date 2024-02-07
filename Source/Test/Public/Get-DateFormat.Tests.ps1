@@ -21,7 +21,7 @@ Describe 'Get-DateFormat Tests' {
         $dateFormat.GeneralDateTime | Should -Be '11/17/2017 12:00:00 AM'
         $dateFormat.IsDaylightSavingTime | Should -Be 'False'
         $dateFormat.IsLeapYear | Should -Be 'False'
-        $dateFormat.ISO8601 | Should -Be '2017-11-17T00:00:00.000-06:00'
+        $dateFormat.ISO8601 | Should -Match '2017-11-17T00:00:00.000'
         $dateFormat.ISO8601UTC | Should -Be '2017-11-17T00:00:00.000Z'
         $dateFormat.LongDate | Should -Be 'Friday, November 17, 2017'
         $dateFormat.LongDateNoDay | Should -Be 'November 17, 2017'

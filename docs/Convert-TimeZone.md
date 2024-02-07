@@ -13,10 +13,10 @@ Convert a datetime value from one time zone to another
 
 ## SYNTAX
 
-### __AllParameterSets
+### Default
 
 ```
-Convert-TimeZone [-ToTimeZone] <String> [[-Date <DateTime>]] [[-FromTimeZone <String>]] [<CommonParameters>]
+Convert-TimeZone -ToTimeZone <String> [-Date <DateTime>] [-FromTimeZone <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,12 +64,12 @@ If not specified the current time will be used
 
 ```yaml
 Type: DateTime
-Parameter Sets: (All)
+Parameter Sets: Default
 Aliases: 
 Accepted values: 
 
-Required: True (None) False (All)
-Position: 1
+Required: True (None) False (Default)
+Position: Named
 Default value: $(Get-Date)
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -83,12 +83,12 @@ If not specified the local time zone will be used
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Default
 Aliases: 
 Accepted values: 
 
-Required: True (None) False (All)
-Position: 2
+Required: True (None) False (Default)
+Position: Named
 Default value: [System.TimeZoneInfo]::Local.Id.ToString()
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -101,12 +101,12 @@ The time zone ID of the time zone you want to convert the date to
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Default
 Aliases: 
 Accepted values: 
 
-Required: True (All) False (None)
-Position: 0
+Required: True (Default) False (None)
+Position: Named
 Default value: 
 Accept pipeline input: False
 Accept wildcard characters: False

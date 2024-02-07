@@ -7,7 +7,11 @@ BeforeAll {
 
 Describe 'Find-TimeZone Tests' {
     It 'Find-TimeZone Test' {
-        Find-TimeZone -Name "GMT" | Should -Be '(UTC+00:00) Dublin, Edinburgh, Lisbon, London'
+        $london = 'GMT Standard Time'
+        if($IsLinux){
+            $london = 'Europe/London'
+        }
+        (Find-TimeZone -Name "London").Id | Should -Be $london
         Find-TimeZone -Name "central" -Offset -6 | Should -Contain ([System.TimeZoneInfo]::FindSystemTimeZoneById('Central Standard Time'))
     }
 }

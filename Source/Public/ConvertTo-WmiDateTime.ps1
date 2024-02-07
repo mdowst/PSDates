@@ -24,5 +24,13 @@ Function ConvertTo-WmiDateTime {
       [datetime]$Date = (Get-Date)
    )
 
-   [Management.ManagementDateTimeConverter]::ToDmtfDateTime($Date)
+   $wmiString = $Date.ToString("yyyyMMddHHmmss.ffffff")
+   if($Date.Kind -eq 'Utc'){
+      $wmiString += '+000'
+   }
+   else{
+      $offset = ([System.TimeZoneInfo]::Local).BaseUtcOffset.TotalMinutes
+      $wmiString += "$($offset)"
+   }
+   $wmiString
 }

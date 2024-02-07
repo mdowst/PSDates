@@ -287,9 +287,36 @@ Function ConvertFrom-WmiDateTime {
       [string]$WmiTime
    )
 
-   [Management.ManagementDateTimeConverter]::ToDateTime($WmiTime)
+   # Extract individual components from the WMI DateTime string
+   $year = [int]$WmiTime.Substring(0, 4)
+   $month = [int]$WmiTime.Substring(4, 2)
+   $day = [int]$WmiTime.Substring(6, 2)
+   $hour = [int]$WmiTime.Substring(8, 2)
+   $minute = [int]$WmiTime.Substring(10, 2)
+   $second = [int]$WmiTime.Substring(12, 2)
+   $millisecond = [int]$WmiTime.Substring(15, 6)
+
+   # Create a DateTime object
+   $dateTime = [datetime]::SpecifyKind(([datetime]"$year-$month-$day $($hour):$($minute):$second.$millisecond"), 'Utc')
+
+   # Create a TimeSpan object for the UTC offset
+   if ($WmiTime -match '\+') {
+      $offsetMinutes = [int]$WmiTime.Split('+')[-1]
+      $offset = New-TimeSpan -Minutes $offsetMinutes
+      # Adjust for the UTC offset
+      $dateTime = $dateTime.Add(-$offset)
+   }
+   elseif ($WmiTime -match '\-') {
+      $offsetMinutes = [int]$WmiTime.Split('-')[-1]
+      $offset = New-TimeSpan -Minutes $offsetMinutes
+      # Adjust for the UTC offset
+      $dateTime = $dateTime.Add($offset)
+   }
+   
+   # Convert to local time and output
+   $dateTime.ToLocalTime()
 }
-#EndRegion '.\Public\ConvertFrom-WmiDateTime.ps1' 28
+#EndRegion '.\Public\ConvertFrom-WmiDateTime.ps1' 55
 #Region '.\Public\ConvertTo-UnixTime.ps1' -1
 
 Function ConvertTo-UnixTime {
@@ -715,43 +742,6 @@ Function Get-Easter {
     [datetime]::new($year, $m, $d)
 }
 #EndRegion '.\Public\Get-Easter.ps1' 67
-#Region '.\Public\Get-HappyHour.ps1' -1
-
-Function Get-HappyHour {
-    [CmdletBinding()]
-    [OutputType([string])]
-    $now = Get-Date '16:30'
-
-    $untilHH = New-TimeSpan -Start $now -End (Get-Date '17:00')
-
-    if($untilHH.Hours -ne 0){
-
-    }
-
-    if ($hoursUntilHH -lt 0) {
-        Write-Output "Happy hour started $($hoursUntilHH * -1) hours ago!"
-    }
-    elseif ($hoursUntilHH -eq 0) {
-        Write-Output "Happy hour started $($now.Minute) minutes ago!"
-    }
-    else {
-        if ($hoursUntilHH -eq 1) {
-            Write-Output "Happy hour starts in $(60 - $now.Minute) minutes!"
-        }
-        else {
-            Write-Output "Happy hour starts in $($hoursUntilHH) hours!"
-        }
-
-        Write-Output "It is currently happy hour in..."
-        $local = [System.TimeZoneInfo]::Local
-        $offsetHoursUntilHH = $local.BaseUtcOffset.Hours + $hoursUntilHH
-        $TimeZones = [System.TimeZoneInfo]::GetSystemTimeZones()
-        $TimeZones | Where-Object { $_.BaseUtcOffset.Hours -eq $offsetHoursUntilHH } | Foreach-Object {
-            "  - $($_.DisplayName.Substring($_.DisplayName.IndexOf(' ')).Trim())"
-        }
-    }
-}
-#EndRegion '.\Public\Get-HappyHour.ps1' 35
 #Region '.\Public\Get-PatchTuesday.ps1' -1
 
 Function Get-PatchTuesday {

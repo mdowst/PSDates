@@ -6,8 +6,8 @@ Function ConvertTo-WmiDateTime {
 .DESCRIPTION
    This function will return the WMI datetime string based on a datetime passed.
 
-.PARAMETER WmiTime
-   The WmiTime value to return the datetime for
+.PARAMETER Date
+   Specifies a date and time.
 
 .EXAMPLE
    ConvertTo-WmiDateTime -Date '06/25/2019 16:17'

@@ -16,7 +16,7 @@ Converts a datetime value to a Wmi datetime string
 ### __AllParameterSets
 
 ```
-ConvertTo-WmiDateTime [[-Date <DateTime>]] [<CommonParameters>]
+ConvertTo-WmiDateTime [[-Date <DateTime>]] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +43,7 @@ Return the WMI datetime string for the datetime of "06/25/2019 16:17"
 
 ### -Date
 
-{{ Fill Date Description }}
+Specifies a date and time.
 
 ```yaml
 Type: DateTime
@@ -54,6 +54,24 @@ Accepted values:
 Required: True (None) False (All)
 Position: 0
 Default value: (Get-Date)
+Accept pipeline input: False
+Accept wildcard characters: False
+DontShow: False
+```
+
+### -ProgressAction
+
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+Accepted values: 
+
+Required: True (None) False (All)
+Position: Named
+Default value: 
 Accept pipeline input: False
 Accept wildcard characters: False
 DontShow: False

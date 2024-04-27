@@ -16,7 +16,7 @@ This function offers a generic Easter computing method for any given year, using
 ### __AllParameterSets
 
 ```
-Get-Easter [[-year <Int32>]] [[-Calendar <String>]] [<CommonParameters>]
+Get-Easter [[-year <Int32>]] [[-Calendar <String>]] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,6 +56,24 @@ Accepted values:
 Required: True (None) False (All)
 Position: 1
 Default value: Gregorian
+Accept pipeline input: False
+Accept wildcard characters: False
+DontShow: False
+```
+
+### -ProgressAction
+
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+Accepted values: 
+
+Required: True (None) False (All)
+Position: Named
+Default value: 
 Accept pipeline input: False
 Accept wildcard characters: False
 DontShow: False

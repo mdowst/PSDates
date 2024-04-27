@@ -16,7 +16,7 @@ Converts a Wmi Time value to a datetime value
 ### __AllParameterSets
 
 ```
-ConvertFrom-WmiDateTime [-WmiTime] <String> [<CommonParameters>]
+ConvertFrom-WmiDateTime [-WmiTime] <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +41,24 @@ Gets datetime for the Wmi time 20190912173652.000000-300
 
 
 ## PARAMETERS
+
+### -ProgressAction
+
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+Accepted values: 
+
+Required: True (None) False (All)
+Position: Named
+Default value: 
+Accept pipeline input: False
+Accept wildcard characters: False
+DontShow: False
+```
 
 ### -WmiTime
 

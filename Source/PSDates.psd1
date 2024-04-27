@@ -12,7 +12,7 @@
 RootModule = '.\PSDates.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -54,7 +54,7 @@ ProcessorArchitecture = 'Amd64'
 # RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = @('.\Resources\NCrontab.dll')
+RequiredAssemblies = @('.\Resources\NCrontab.dll','.\Resources\CronExpressionDescriptor.dll')
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = '.\Classes\DateTimeFormats.ps1', '.\Classes\DateTimeExtended.ps1'

@@ -13,8 +13,11 @@ New-MarkdownHelp -Module PSDates -OutputFolder .\docs
 
 $readme = Get-Content .\README.md
 $docs = Get-ChildItem .\docs -Filter '*.md' | ForEach-Object{
-    "* [$($_.BaseName)](docs/$($_.Name))"
+    $content = Get-Content -LiteralPath $_.FullName
+    "| [$($_.BaseName)](docs/$($_.Name)) | $($content[$content.IndexOf('## SYNOPSIS')+2]) |"
 }
+
+
 
 $commands = $false
 $readmeupdate = foreach($line in $readme){
@@ -22,6 +25,8 @@ $readmeupdate = foreach($line in $readme){
         $commands = $true
         $line
         ''
+        '| Cmdlet | Synopsis |'
+        '| ------ | -------- |'
         $docs
         ''
     }

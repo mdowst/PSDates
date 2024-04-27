@@ -16,6 +16,9 @@ Function Find-TimeZone {
 .PARAMETER local
    Use to return the time zone of the current system
 
+.PARAMETER OutGrid
+   Use to output time zone selects to Grid View
+
 .EXAMPLE
    Find-TimeZone -local
    Return the time zone of the local system

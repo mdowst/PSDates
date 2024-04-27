@@ -9,27 +9,27 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-Gets common extended date values that are not included by default with the Get-Date cmdlet
+Gets additional extended date values that are not included by default with the Get-Date cmdlet
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Get-DateExtended [[-Date <DateTime>]] [-Day <Int32>] [-DisplayHint <String>] [-FromUnixTime] [-Hour <Int32>] [-Millisecond <Int32>] [-Minute <Int32>] [-Month <Int32>] [-Second <Int32>] [-Year <Int32>] [<CommonParameters>]
+Get-DateExtended [[-Date <DateTime>]] [-Day <Int32>] [-DisplayHint <String>] [-Hour <Int32>] [-Millisecond <Int32>] [-Minute <Int32>] [-Month <Int32>] [-ProgressAction <ActionPreference>] [-Second <Int32>] [-UnixTimeSeconds] [-Year <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
 This function includes added values for:
- FirstDayOfYear : First day of the year
- LastDayOfYear  : Last day of the year
- StartOfWeek    : First day of the week
- EndOfWeek      : Last day of the week
- StartOfMonth   : First day of the month
- EndOfMonth     : Last day of the month
- TimeZone       : Current machine timezone
- Quater         : The quarter of the year.
+   FirstDayOfYear : First day of the year
+   LastDayOfYear  : Last day of the year
+   StartOfWeek    : First day of the week
+   EndOfWeek      : Last day of the week
+   StartOfMonth   : First day of the month
+   EndOfMonth     : Last day of the month
+   TimeZone       : Current machine timezone
+   Quater         : The quarter of the year.
 
 All dates are based on the date passed.
 If no date is passed in the current date and time are used.
@@ -86,7 +86,8 @@ DontShow: False
 
 ### -Day
 
-{{ Fill Day Description }}
+Specifies the day of the month that is displayed.
+Enter a value from 1 to 31.
 
 ```yaml
 Type: Int32
@@ -104,7 +105,13 @@ DontShow: False
 
 ### -DisplayHint
 
-{{ Fill DisplayHint Description }}
+Determines which elements of the date and time are displayed.
+
+The accepted values are as follows:
+
+   Date: displays only the date
+   Time: displays only the time
+   DateTime: displays the date and time
 
 ```yaml
 Type: String
@@ -120,27 +127,10 @@ Accept wildcard characters: False
 DontShow: False
 ```
 
-### -FromUnixTime
-
-{{ Fill FromUnixTime Description }}
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-Accepted values: 
-
-Required: True (None) False (All)
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-DontShow: False
-```
-
 ### -Hour
 
-{{ Fill Hour Description }}
+Specifies the hour that is displayed.
+Enter a value from 0 to 23.
 
 ```yaml
 Type: Int32
@@ -158,7 +148,8 @@ DontShow: False
 
 ### -Millisecond
 
-{{ Fill Millisecond Description }}
+Specifies the milliseconds in the date.
+Enter a value from 0 to 999.
 
 ```yaml
 Type: Int32
@@ -176,7 +167,8 @@ DontShow: False
 
 ### -Minute
 
-{{ Fill Minute Description }}
+Specifies the minute that is displayed.
+Enter a value from 0 to 59.
 
 ```yaml
 Type: Int32
@@ -194,7 +186,8 @@ DontShow: False
 
 ### -Month
 
-{{ Fill Month Description }}
+Specifies the month that is displayed.
+Enter a value from 1 to 12
 
 ```yaml
 Type: Int32
@@ -205,6 +198,24 @@ Accepted values:
 Required: True (None) False (All)
 Position: Named
 Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+DontShow: False
+```
+
+### -ProgressAction
+
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+Accepted values: 
+
+Required: True (None) False (All)
+Position: Named
+Default value: 
 Accept pipeline input: False
 Accept wildcard characters: False
 DontShow: False
@@ -212,7 +223,8 @@ DontShow: False
 
 ### -Second
 
-{{ Fill Second Description }}
+Specifies the second that is displayed.
+Enter a value from 0 to 59.
 
 ```yaml
 Type: Int32
@@ -228,9 +240,28 @@ Accept wildcard characters: False
 DontShow: False
 ```
 
+### -UnixTimeSeconds
+
+Date and time represented in seconds since January 1, 1970, 0:00:00.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+Accepted values: 
+
+Required: True (None) False (All)
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+DontShow: False
+```
+
 ### -Year
 
-{{ Fill Year Description }}
+Specifies the year that is displayed.
+Enter a value from 1 to 9999
 
 ```yaml
 Type: Int32

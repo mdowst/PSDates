@@ -16,7 +16,7 @@ Returns Time Zone information
 ### __AllParameterSets
 
 ```
-Find-TimeZone [[-Name <String>]] [[-Offset <Int32>]] [-Local] [-OutGrid] [<CommonParameters>]
+Find-TimeZone [[-Name <String>]] [[-Offset <Int32>]] [-Local] [-OutGrid] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -127,7 +127,7 @@ DontShow: False
 
 ### -OutGrid
 
-{{ Fill OutGrid Description }}
+Use to output time zone selects to Grid View
 
 ```yaml
 Type: SwitchParameter
@@ -138,6 +138,24 @@ Accepted values:
 Required: True (None) False (All)
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+DontShow: False
+```
+
+### -ProgressAction
+
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+Accepted values: 
+
+Required: True (None) False (All)
+Position: Named
+Default value: 
 Accept pipeline input: False
 Accept wildcard characters: False
 DontShow: False

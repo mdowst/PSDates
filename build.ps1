@@ -22,6 +22,7 @@ $psd1 = Get-ChildItem .\Build -Filter 'PSDates.psd1' -Recurse | Select-Object -L
 
 $ResourceFolder = Join-Path $psd1.DirectoryName 'Resources'
 New-Item -Path $ResourceFolder -ItemType Directory | Out-Null
+Copy-Item -Path '.\Source\Resources\CronExpressionDescriptor.dll' -Destination $ResourceFolder
 Copy-Item -Path '.\Source\Resources\ncrontab.3.3.0\lib\net35\NCrontab.dll' -Destination $ResourceFolder
 Copy-Item -Path '.\Source\Resources\DateTimeExtensions.format.ps1xml' -Destination $ResourceFolder
 

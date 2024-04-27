@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>Brady Holt</dc:creator>
+  <dc:description>A library that converts cron expressions into human readable descriptions.  Supports multiple languages including: English, Brazillian, Spanish, Norwgian, Turkish, Dutch, Chinese Simplified, Russian, French, German, Ukrainian, Persian (Farsi), Polish, Romanian Italian, Swedish, Slovenian, Danish, Finnish and Japanese.</dc:description>
+  <dc:identifier>CronExpressionDescriptor</dc:identifier>
+  <version>2.33.0</version>
+  <keywords>cron, schedule, quartz, quartz.net, cron expression</keywords>
+  <lastModifiedBy>NuGet.Build.Tasks.Pack, Version=6.9.1.3, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET Standard 2.0</lastModifiedBy>
+</coreProperties>

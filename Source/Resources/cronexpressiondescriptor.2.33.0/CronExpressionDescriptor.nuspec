@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>CronExpressionDescriptor</id>
+    <version>2.33.0</version>
+    <authors>Brady Holt</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>icon.png</icon>
+    <projectUrl>https://github.com/bradymholt/cron-expression-descriptor</projectUrl>
+    <description>A library that converts cron expressions into human readable descriptions.  Supports multiple languages including: English, Brazillian, Spanish, Norwgian, Turkish, Dutch, Chinese Simplified, Russian, French, German, Ukrainian, Persian (Farsi), Polish, Romanian Italian, Swedish, Slovenian, Danish, Finnish and Japanese.</description>
+    <releaseNotes>See https://github.com/bradymholt/cron-expression-descriptor/releases for release notes</releaseNotes>
+    <tags>cron, schedule, quartz, quartz.net, cron expression</tags>
+    <repository type="git" url="https://github.com/bradymholt/cron-expression-descriptor" commit="e21f1089e6a771388cf2f8574fcb79cb68cb2d38" />
+    <dependencies>
+      <group targetFramework=".NETStandard1.1">
+        <dependency id="NETStandard.Library" version="1.6.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net6.0" />
+      <group targetFramework=".NETStandard2.0" />
+    </dependencies>
+  </metadata>
+</package>

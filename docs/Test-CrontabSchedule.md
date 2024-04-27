@@ -16,7 +16,7 @@ Tests that a crontab string is valid
 ### __AllParameterSets
 
 ```
-Test-CrontabSchedule [-Crontab] <String> [<CommonParameters>]
+Test-CrontabSchedule [-Crontab] <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,6 +72,24 @@ Accepted values:
 
 Required: True (All) False (None)
 Position: 0
+Default value: 
+Accept pipeline input: False
+Accept wildcard characters: False
+DontShow: False
+```
+
+### -ProgressAction
+
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+Accepted values: 
+
+Required: True (None) False (All)
+Position: Named
 Default value: 
 Accept pipeline input: False
 Accept wildcard characters: False

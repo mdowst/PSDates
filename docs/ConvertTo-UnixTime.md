@@ -16,7 +16,7 @@ Converts a datetime value to Unix Time
 ### __AllParameterSets
 
 ```
-ConvertTo-UnixTime [[-date <DateTime>]] [<CommonParameters>]
+ConvertTo-UnixTime [[-date <DateTime>]] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,6 +69,24 @@ Accepted values:
 Required: True (None) False (All)
 Position: 0
 Default value: $(Get-Date)
+Accept pipeline input: False
+Accept wildcard characters: False
+DontShow: False
+```
+
+### -ProgressAction
+
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+Accepted values: 
+
+Required: True (None) False (All)
+Position: Named
+Default value: 
 Accept pipeline input: False
 Accept wildcard characters: False
 DontShow: False

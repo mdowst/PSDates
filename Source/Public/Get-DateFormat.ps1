@@ -1,8 +1,8 @@
 Function Get-DateFormat {
-   [alias("Get-DateFormats")]
    <#
 .SYNOPSIS
    Returns common date and time formats
+   
 .DESCRIPTION
    This function format date and time values into multiple different common formats. All dates are based on the date passed.
    If no date is passed in the current date and time are used.
@@ -22,6 +22,7 @@ Function Get-DateFormat {
 .OUTPUTS
    A PSObject containing the diffent values for the datetime formats.
 #>
+   [alias("Get-DateFormats")]
    [CmdletBinding()]
    [OutputType([DateTimeFormats])]
    param(

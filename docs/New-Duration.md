@@ -9,33 +9,31 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-Calculates the time span between two dates and returns the duration in the ISO 8601 format
+Short description
 
 ## SYNTAX
 
 ### datetime
 
 ```
-New-Duration -End <DateTime> -Start <DateTime> [<CommonParameters>]
+New-Duration -End <DateTime> -Start <DateTime> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### numbers
 
 ```
-New-Duration [-Days <Int32>] [-Hours <Int32>] [-Minutes <Int32>] [-Months <Int32>] [-Seconds <Int32>] [-Years <Int32>] [<CommonParameters>]
+New-Duration [-Days <Int32>] [-Hours <Int32>] [-Minutes <Int32>] [-Months <Int32>] [-ProgressAction <ActionPreference>] [-Seconds <Int32>] [-Years <Int32>] [<CommonParameters>]
 ```
 
 ### week
 
 ```
-New-Duration [-Weeks <Int32>] [<CommonParameters>]
+New-Duration [-ProgressAction <ActionPreference>] [-Weeks <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
-Calculates the timespan between two dates and returns the duration in the ISO 8601 format
-
-https://en.wikipedia.org/wiki/ISO_8601#Durations
+Long description
 
 
 ## EXAMPLES
@@ -43,31 +41,7 @@ https://en.wikipedia.org/wiki/ISO_8601#Durations
 ### Example 1: EXAMPLE 1
 
 ```
-New-Duration -Start '2/3/2023' -End (Get-Date)
-```
-
-
-
-
-
-
-
-### Example 2: EXAMPLE 2
-
-```
-New-Duration -Days 1 -Hours 4
-```
-
-
-
-
-
-
-
-### Example 3: EXAMPLE 3
-
-```
-New-Duration -Weeks 3
+An example
 ```
 
 
@@ -81,7 +55,7 @@ New-Duration -Weeks 3
 
 ### -Days
 
-{{ Fill Days Description }}
+Parameter description
 
 ```yaml
 Type: Int32
@@ -99,8 +73,7 @@ DontShow: False
 
 ### -End
 
-Specifies the end of a time span.
-End date must be greater than the start date
+Parameter description
 
 ```yaml
 Type: DateTime
@@ -118,7 +91,7 @@ DontShow: False
 
 ### -Hours
 
-{{ Fill Hours Description }}
+Parameter description
 
 ```yaml
 Type: Int32
@@ -136,7 +109,7 @@ DontShow: False
 
 ### -Minutes
 
-{{ Fill Minutes Description }}
+Parameter description
 
 ```yaml
 Type: Int32
@@ -154,7 +127,7 @@ DontShow: False
 
 ### -Months
 
-{{ Fill Months Description }}
+Parameter description
 
 ```yaml
 Type: Int32
@@ -170,9 +143,27 @@ Accept wildcard characters: False
 DontShow: False
 ```
 
+### -ProgressAction
+
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+Accepted values: 
+
+Required: True (None) False (All)
+Position: Named
+Default value: 
+Accept pipeline input: False
+Accept wildcard characters: False
+DontShow: False
+```
+
 ### -Seconds
 
-{{ Fill Seconds Description }}
+Parameter description
 
 ```yaml
 Type: Int32
@@ -190,7 +181,7 @@ DontShow: False
 
 ### -Start
 
-Specifies the start of a time span.
+Parameter description
 
 ```yaml
 Type: DateTime
@@ -208,7 +199,7 @@ DontShow: False
 
 ### -Weeks
 
-{{ Fill Weeks Description }}
+Parameter description
 
 ```yaml
 Type: Int32
@@ -226,7 +217,7 @@ DontShow: False
 
 ### -Years
 
-{{ Fill Years Description }}
+Parameter description
 
 ```yaml
 Type: Int32
@@ -254,6 +245,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+General notes
 
 
 ## RELATED LINKS

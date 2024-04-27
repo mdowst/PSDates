@@ -1,28 +1,89 @@
+<#
+.SYNOPSIS
+Short description
+
+.DESCRIPTION
+Long description
+
+.PARAMETER Start
+Parameter description
+
+.PARAMETER End
+Parameter description
+
+.PARAMETER Years
+Parameter description
+
+.PARAMETER Months
+Parameter description
+
+.PARAMETER Days
+Parameter description
+
+.PARAMETER Hours
+Parameter description
+
+.PARAMETER Minutes
+Parameter description
+
+.PARAMETER Seconds
+Parameter description
+
+.PARAMETER Weeks
+Parameter description
+
+.EXAMPLE
+An example
+
+.NOTES
+General notes
+#>
 Function New-Duration {
-    <#
-    .SYNOPSIS
+<#
+.SYNOPSIS
     Calculates the time span between two dates and returns the duration in the ISO 8601 format
 
-    .DESCRIPTION
+.DESCRIPTION
     Calculates the timespan between two dates and returns the duration in the ISO 8601 format
 
     https://en.wikipedia.org/wiki/ISO_8601#Durations
 
-    .PARAMETER Start
-    Specifies the start of a time span.
+.PARAMETER Start
+Specifies the start of a time span.
 
-    .PARAMETER End
-    Specifies the end of a time span. End date must be greater than the start date
+.PARAMETER End
+Specifies the end of a time span. End date must be greater than the start date
 
-    .EXAMPLE
-    New-Duration -Start '2/3/2023' -End (Get-Date)
+.PARAMETER Years
+Specifies the number for yearly interval
 
-    .EXAMPLE
-    New-Duration -Days 1 -Hours 4
+.PARAMETER Months
+Specifies the number for monthly interval
 
-    .EXAMPLE
-    New-Duration -Weeks 3
-    #>
+.PARAMETER Days
+Specifies the number for daily interval
+
+.PARAMETER Hours
+Specifies the number for hourly interval
+
+.PARAMETER Minutes
+Specifies the number for minute interval
+
+.PARAMETER Seconds
+Specifies the number for second interval
+
+.PARAMETER Weeks
+Specifies the number for weekly interval
+
+.EXAMPLE
+New-Duration -Start '2/3/2023' -End (Get-Date)
+
+.EXAMPLE
+New-Duration -Days 1 -Hours 4
+
+.EXAMPLE
+New-Duration -Weeks 3
+#>
     [CmdletBinding()]
     [OutputType([string])]
     param(

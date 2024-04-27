@@ -16,13 +16,13 @@ Returns the second Tuesday of the month
 ### Date (Default)
 
 ```
-Get-PatchTuesday [-Date <DateTime>] [<CommonParameters>]
+Get-PatchTuesday [-Date <DateTime>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### MonthYear
 
 ```
-Get-PatchTuesday [-Month <Int32>] [-Year <Int32>] [<CommonParameters>]
+Get-PatchTuesday [-Month <Int32>] [-ProgressAction <ActionPreference>] [-Year <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -119,6 +119,24 @@ Accepted values:
 Required: True (None) False (MonthYear)
 Position: Named
 Default value: $(Get-Date).Month
+Accept pipeline input: False
+Accept wildcard characters: False
+DontShow: False
+```
+
+### -ProgressAction
+
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+Accepted values: 
+
+Required: True (None) False (All)
+Position: Named
+Default value: 
 Accept pipeline input: False
 Accept wildcard characters: False
 DontShow: False

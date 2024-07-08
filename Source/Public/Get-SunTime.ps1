@@ -46,16 +46,16 @@ Right click a specific point on the Google map and you will see the latitude and
         [double]$Elevation = 0.0,
         [TimeZoneInfo]$TimeZone = $null
     )
-
+    $suntime = [SunTime]::new()
     $datetimeOffset = [DateTimeOffset]::new($Date)
     $CurrentTimestamp = $datetimeOffset.ToUniversalTime().ToUnixTimeSeconds()
 
-    Write-Verbose "Latitude               f       = $(ConvertTo-DegreeString $Latitude)"
-    Write-Verbose "Longitude              l_w     = $(ConvertTo-DegreeString $Longitude)"
-    Write-Verbose "Now                    ts      = $(ConvertFrom-Timestamp $CurrentTimestamp $TimeZone)"
+    Write-Verbose "Latitude               f       = $($suntime.ToDegreeString($Latitude))"
+    Write-Verbose "Longitude              l_w     = $($suntime.ToDegreeString($Longitude))"
+    Write-Verbose "Now                    ts      = $($suntime.FromTimestamp($CurrentTimestamp, $TimeZone))"
 
     
-    $J_date = Convert-TimestampToJulian $CurrentTimestamp
+    $J_date = $suntime.TimestampToJulian($CurrentTimestamp)
     Write-Verbose ("Julian date            j_date  = {0:N3} days" -f $J_date)
     
     # Julian day
@@ -69,21 +69,21 @@ Right click a specific point on the Google map and you will see the latitude and
     # Solar mean anomaly
     $M_degrees = [math]::IEEERemainder(357.5291 + 0.98560028 * $J_, 360)
     $M_radians = ($M_degrees * ([math]::PI / 180))
-    Write-Verbose "Solar mean anomaly     M       = $(ConvertTo-DegreeString $M_degrees)"
+    Write-Verbose "Solar mean anomaly     M       = $($suntime.ToDegreeString($M_degrees))"
 
     # Equation of the center
     $C_degrees = 1.9148 * [math]::Sin($M_radians) + 0.02 * [math]::Sin(2 * $M_radians) + 0.0003 * [math]::Sin(3 * $M_radians)
-    Write-Verbose "Equation of the center C       = $(ConvertTo-DegreeString $C_degrees)"
+    Write-Verbose "Equation of the center C       = $($suntime.ToDegreeString($C_degrees))"
 
     # Ecliptic longitude
     $L_degrees = [math]::IEEERemainder($M_degrees + $C_degrees + 180.0 + 102.9372, 360)
-    Write-Verbose "Ecliptic longitude     L       = $(ConvertTo-DegreeString $L_degrees)"
+    Write-Verbose "Ecliptic longitude     L       = $($suntime.ToDegreeString($L_degrees))"
 
     $Lambda_radians = ($L_degrees * ([math]::PI / 180))
 
     # Solar transit (julian date)
     $J_transit = 2451545.0 + $J_ + 0.0053 * [math]::Sin($M_radians) - 0.0069 * [math]::Sin(2 * $Lambda_radians)
-    Write-Verbose "Solar transit time     J_trans = $(ConvertFrom-Timestamp (Convert-JulianToTimestamp $J_transit) $TimeZone)"
+    Write-Verbose "Solar transit time     J_trans = $($suntime.FromTimestamp( $suntime.JulianToTimestamp($J_transit), $TimeZone))"
 
     # Declination of the Sun
     $sin_d = [math]::Sin($Lambda_radians) * [math]::Sin((23.4397 * ([math]::PI / 180)))
@@ -95,13 +95,13 @@ Right click a specific point on the Google map and you will see the latitude and
 
 
     $w0_degrees = $w0_radians * 180 / [math]::PI
-    Write-Verbose "Hour angle             w0      = $(ConvertTo-DegreeString $w0_degrees)"
+    Write-Verbose "Hour angle             w0      = $($suntime.ToDegreeString($w0_degrees))"
 
     $j_rise = $J_transit - $w0_degrees / 360
     $j_set = $J_transit + $w0_degrees / 360
 
-    Write-Verbose "Sunrise                j_rise  = $(ConvertFrom-Timestamp (Convert-JulianToTimestamp $j_rise) $TimeZone)"
-    Write-Verbose "Sunset                 j_set   = $(Convert-JulianToTimestamp $j_rise) = $(ConvertFrom-Timestamp (Convert-JulianToTimestamp $j_set) $TimeZone)"
+    Write-Verbose "Sunrise                j_rise  = $($suntime.FromTimestamp( $suntime.JulianToTimestamp($j_rise), $TimeZone))"
+    Write-Verbose "Sunset                 j_set   = $($suntime.JulianToTimestamp($j_rise)) = $($suntime.FromTimestamp($suntime.JulianToTimestamp($j_set), $TimeZone))"
     Write-Verbose ("Day length                       {0:N3} hours" -f ($w0_degrees / (180 / 24)))
 
     [SunTime]@{
@@ -116,8 +116,8 @@ Right click a specific point on the Google map and you will see the latitude and
         EclipticLongitude   = $L_degrees
         SolarTransitTime    = $J_transit
         HourAngle           = $w0_degrees
-        Sunrise             = (Get-Date $(ConvertFrom-Timestamp (Convert-JulianToTimestamp $j_rise) $TimeZone))
-        Sunset              = (Get-Date $(ConvertFrom-Timestamp (Convert-JulianToTimestamp $j_set) $TimeZone))
+        Sunrise             = (Get-Date $($suntime.FromTimestamp($suntime.JulianToTimestamp($j_rise), $TimeZone)))
+        Sunset              = (Get-Date $($suntime.FromTimestamp($suntime.JulianToTimestamp($j_set), $TimeZone)))
         DayLength           = ($w0_degrees / (180 / 24))
         TimeZone            = $TimeZone
     }

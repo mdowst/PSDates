@@ -24,7 +24,7 @@ class SunTime {
     }
 
     [string] FromTimestamp([double]$Timestamp,
-    [System.TimeZoneInfo]$TimeZone = $null) {
+        [System.TimeZoneInfo]$TimeZone = $null) {
         $datetime = ConvertFrom-UnixTime $Timestamp
         if ($TimeZone) {
             $datetime = [System.TimeZoneInfo]::ConvertTimeFromUtc($datetime, $TimeZone)
@@ -36,5 +36,11 @@ class SunTime {
         [double]$Julian
     ) {
         return ($Julian - 2440587.5) * 86400
+    }
+
+    [double] TimestampToJulian (
+        [double]$Timestamp
+    ) {
+        return $Timestamp / 86400.0 + 2440587.5
     }
 }

@@ -111,27 +111,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>degree</Name>
-      <ViewSelectedBy>
-        <TypeName>degree</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>degree</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>SunTimes</Name>
       <ViewSelectedBy>
         <TypeName>SunTimes</TypeName>

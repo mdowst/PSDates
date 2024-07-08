@@ -46,8 +46,8 @@ Right click a specific point on the Google map and you will see the latitude and
         [double]$Elevation = 0.0,
         [TimeZoneInfo]$TimeZone = $null
     )
-    $datetime = Get-Date
-    $datetimeOffset = [DateTimeOffset]::new($datetime)
+
+    $datetimeOffset = [DateTimeOffset]::new($Date)
     $CurrentTimestamp = $datetimeOffset.ToUniversalTime().ToUnixTimeSeconds()
 
     Write-Verbose "Latitude               f       = $(ConvertTo-DegreeString $Latitude)"

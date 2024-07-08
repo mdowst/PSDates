@@ -24,7 +24,7 @@ Describe 'Get-SunTimes Tests' {
         @{Name = 'Times Square'; Latitude = 40.7579747; Longitude = -73.9881175; Elevation = 0; Sunrise = '09:31'; Sunset = '00:31' }
     ) {
         $TimeZone = [System.TimeZoneInfo]::Utc
-        $Date = Get-Date '2024-07-04'
+        $Date = Get-Date '2024-07-05'
         $CalculateSunTimesParam = @{
             Date      = $Date
             Latitude  = $Latitude

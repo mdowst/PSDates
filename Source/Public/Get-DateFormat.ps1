@@ -23,17 +23,28 @@ Function Get-DateFormat {
    A PSObject containing the diffent values for the datetime formats.
 #>
    [alias("Get-DateFormats")]
-   [CmdletBinding()]
-   [OutputType([DateTimeFormats])]
+   [CmdletBinding(DefaultParameterSetName = "Full")]
+   [OutputType([DateTimeFormats], ParameterSetName = "ID")]
+   [OutputType([object], ParameterSetName = "Format")]
    param(
-      [Parameter(Mandatory = $false)]
-      [datetime]$Date = $(Get-Date)
+      [Parameter(Mandatory = $false, ParameterSetName = "Full")]
+      [Parameter(Mandatory = $false, ParameterSetName = "Format")]
+      [datetime]$Date = $(Get-Date),
+      [ArgumentCompleter({
+            param($commandName, $parameterName, $wordToComplete)
+            [DateTimeFormats]::new().psobject.Properties.Name | foreach-object {
+               New-Object -TypeName System.Management.Automation.CompletionResult -ArgumentList "'$_'",
+               $_ , ([System.Management.Automation.CompletionResultType]::ParameterValue) , $_
+            }
+         })]
+      [Parameter(Mandatory = $false, ParameterSetName = "Format")]
+      [string]$Format
    )
 
    $offset = ([System.TimeZoneInfo]::Local).BaseUtcOffset.ToString()
    $offset = $offset.Substring(0, $offset.LastIndexOf(':'))
 
-   [DateTimeFormats]@{
+   $dateFormats = [DateTimeFormats]@{
       DateTime                  = $Date.DateTime
       RFC1123UTC                = $Date.ToUniversalTime().ToString('r')
       SQL                       = $Date.ToString("yyyy-MM-dd HH:mm:ss.fff")
@@ -41,7 +52,7 @@ Function Get-DateFormat {
       ISO8601                   = $Date.ToString("yyyy-MM-ddTHH:mm:ss.fff") + $offset
       ShortDate                 = $Date.ToString('d')
       LongDate                  = $Date.ToString('D')
-      LongDateNoDay             = $Date.ToString('D').Substring($Date.ToString('D').IndexOf(',')+2)
+      LongDateNoDay             = $Date.ToString('D').Substring($Date.ToString('D').IndexOf(',') + 2)
       FullDateShortTime         = $Date.ToString('f')
       FullDateTime              = $Date.ToString('F')
       GeneralDateShortTime      = $Date.ToString('g')
@@ -71,5 +82,12 @@ Function Get-DateFormat {
       IsDaylightSavingTime      = $Date.IsDaylightSavingTime()
       IsLeapYear                = [datetime]::IsLeapYear($Date.Year)
       FileTime                  = $Date.ToFileTime()
+   }
+
+   if ([string]::IsNullOrEmpty($PSBoundParameters['Format'])) {
+      $dateFormats
+   }
+   else {
+      $dateFormats."$($PSBoundParameters['Format'])"
    }
 }

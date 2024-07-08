@@ -63,13 +63,13 @@ RequiredAssemblies = @('.\Resources\NCrontab.dll','.\Resources\CronExpressionDes
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Resources\DateTimeExtensions.format.ps1xml'
+FormatsToProcess = '.\PSDates.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('Convert-TimeZone','ConvertFrom-UnixTime','ConvertFrom-WmiDateTime','ConvertTo-UnixTime','ConvertTo-WmiDateTime','Find-TimeZone','Get-CronNextOccurrence','Get-DateExtended','Get-DateFormat','Get-Easter','Get-PatchTuesday','New-Duration','Test-CrontabSchedule')
+FunctionsToExport = '*'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()

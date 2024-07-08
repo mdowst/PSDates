@@ -8,7 +8,7 @@ class DateTimeExtended {
     [datetime]$EndOfMonth
     [string]$WeekOfYear
     [System.TimeZoneInfo]$TimeZone
-    [int]$Quater
+    [int]$Quarter
     [datetime]$Date
     [int]$Day
     [System.DayOfWeek]$DayOfWeek
@@ -39,7 +39,7 @@ class DateTimeExtended {
         $this.EndOfMonth = ((($StartOfMonth).AddMonths(1).AddSeconds(-1)))
         $this.WeekOfYear = (Get-Date $date -uformat %V)
         $this.TimeZone = ([System.TimeZoneInfo]::Local)
-        $this.Quater = [Math]::ceiling($Date.Month / 3)
+        $this.Quarter = [Math]::ceiling($Date.Month / 3)
         $this.Date = $Date.Date
         $this.Day = $Date.Day
         $this.DayOfWeek = $Date.DayOfWeek

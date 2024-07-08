@@ -1,4 +1,4 @@
-function Get-SunTimes {
+function Get-SunTime {
     <#
 .SYNOPSIS
 Find sunrise and sunset times for any location on planet Earth.
@@ -22,14 +22,14 @@ The Elevation in meters
 The time zone for the final results
 
 .EXAMPLE
-Get-SunTimes -Latitude 51.501005 -Longitude -0.1445479
+Get-SunTime -Latitude 51.501005 -Longitude -0.1445479
 
 # Get the sunrise and sunset for the given coordinates for the current day
 
 .EXAMPLE
 $address = '1600 Pennsylvania Avenue NW'
 $addr = Invoke-RestMethod "https://nominatim.openstreetmap.org/search?q=$($address)&format=json" | Select-Object -First 1
-Get-SunTimes -Latitude $addr.lat -Longitude $addr.lon
+Get-SunTime -Latitude $addr.lat -Longitude $addr.lon
 
 # Use the free Nominatim API get the coordinates for an address, then use those results to get the sunrise and sunset for that location.
 
@@ -103,26 +103,8 @@ Right click a specific point on the Google map and you will see the latitude and
     Write-Verbose "Sunrise                j_rise  = $(ConvertFrom-Timestamp (Convert-JulianToTimestamp $j_rise) $TimeZone)"
     Write-Verbose "Sunset                 j_set   = $(Convert-JulianToTimestamp $j_rise) = $(ConvertFrom-Timestamp (Convert-JulianToTimestamp $j_set) $TimeZone)"
     Write-Verbose ("Day length                       {0:N3} hours" -f ($w0_degrees / (180 / 24)))
-    <#
-    [SunTimes]@{
-        Latitude            = $(ConvertTo-DegreeString $Latitude)
-        Longitude           = $(ConvertTo-DegreeString $Longitude)
-        Now                 = $(ConvertFrom-Timestamp $CurrentTimestamp $TimeZone)
-        JulianDate          = ("{0:N3} days" -f $J_date)
-        JulianDay           = ("{0:N3} days" -f $n)
-        MeanSolarTime       = ("{0:N9} days" -f $J_)
-        SolarMeanAnomaly    = $(ConvertTo-DegreeString $M_degrees)
-        EquationOfTheCenter = $(ConvertTo-DegreeString $C_degrees)
-        EclipticLongitude   = $(ConvertTo-DegreeString $L_degrees)
-        SolarTransitTime    = $(ConvertFrom-Timestamp (Convert-JulianToTimestamp $J_transit) $TimeZone)
-        HourAngle           = $(ConvertTo-DegreeString $w0_degrees)
-        Sunrise             = (Get-Date $(ConvertFrom-Timestamp (Convert-JulianToTimestamp $j_rise) $TimeZone))
-        Sunset              = (Get-Date $(ConvertFrom-Timestamp (Convert-JulianToTimestamp $j_set) $TimeZone))
-        DayLength           = ($w0_degrees / (180 / 24))
-        TimeZone            = $TimeZone
-    }
-        #>
-    [SunTimes]@{
+
+    [SunTime]@{
         Latitude            = $Latitude
         Longitude           = $Longitude
         Now                 = $CurrentTimestamp

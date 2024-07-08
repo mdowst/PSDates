@@ -1,4 +1,4 @@
-class SunTimes {
+class SunTime {
     [double]       $Latitude 
     [double]       $Longitude
     [int64]        $Now

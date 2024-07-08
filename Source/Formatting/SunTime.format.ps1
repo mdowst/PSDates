@@ -5,7 +5,7 @@ $VirtualProperties = [ordered]@{
     "DayLength" = { "{0:N3} hours" -f $_.DayLength }
 }
 $Property = $VirtualProperties.GetEnumerator() | ForEach-Object { $_.Name }
-Write-FormatView -TypeName SunTimes -Property $Property -VirtualProperty $VirtualProperties
+Write-FormatView -TypeName SunTime -Property $Property -VirtualProperty $VirtualProperties
 
 $VirtualProperties = [ordered]@{
     Date                = { $_.Sunrise.ToString('d') }
@@ -26,4 +26,4 @@ $VirtualProperties = [ordered]@{
 }
 
 $Property = $VirtualProperties.GetEnumerator() | ForEach-Object { $_.Name }
-Write-FormatView -TypeName SunTimes -Property $Property -VirtualProperty $VirtualProperties -AsList
+Write-FormatView -TypeName SunTime -Property $Property -VirtualProperty $VirtualProperties -AsList

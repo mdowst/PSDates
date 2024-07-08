@@ -13,11 +13,11 @@ if(Test-Path .\Build){
 # Generate EzOut formaters
 . '.\Source\PSDates.EzFormat.ps1'
 
-#$linter = . '.\Source\Test\ScriptAnalyzer\ScriptAnalyzer.Linter.ps1'
-#if ($linter) {
-##    $linter
-#    throw "Failed linter tests"
-#}
+$linter = . '.\Source\Test\ScriptAnalyzer\ScriptAnalyzer.Linter.ps1'
+if ($linter) {
+    $linter
+    throw "Failed linter tests"
+}
 
 Build-Module -SourcePath .\Source -OutputDirectory ..\Build -Version $VersionNumber
 
@@ -29,19 +29,6 @@ New-Item -Path $ResourceFolder -ItemType Directory | Out-Null
 Copy-Item -Path '.\Source\Resources\CronExpressionDescriptor.dll' -Destination $ResourceFolder
 Copy-Item -Path '.\Source\Resources\ncrontab.3.3.0\lib\net35\NCrontab.dll' -Destination $ResourceFolder
 
-break
-Copy-Item -Path '.\Source\Resources\DateTimeExtensions.format.ps1xml' -Destination $ResourceFolder
-
-$HolidayFolder = Join-Path $ResourceFolder  'Holidays'
-New-Item -Path $HolidayFolder -ItemType Directory | Out-Null
-Copy-Item -Path '.\Source\Resources\Holidays\*.ps*1' -Destination $HolidayFolder
-
-
-@'
-# Import Argument Completer for Holiday commands
-$HolidayArgumentCompleter = Join-Path $PSScriptRoot 'Resources\Holidays\HolidayArgumentCompleter.ps1'
-. $HolidayArgumentCompleter
-'@ | Out-File -LiteralPath $psm1.FullName -Append
 
 #$nuspec = Copy-Item -Path .\Source\PSDates.nuspec -Destination $psd1.DirectoryName -PassThru
 #.'nuget.exe' pack "$($nuspec.FullName)" -OutputDirectory .\Build -Version "$($VersionNumber)"

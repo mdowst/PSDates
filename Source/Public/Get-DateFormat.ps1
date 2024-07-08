@@ -26,6 +26,7 @@ Function Get-DateFormat {
    [CmdletBinding(DefaultParameterSetName = "Full")]
    [OutputType([DateTimeFormats], ParameterSetName = "ID")]
    [OutputType([object], ParameterSetName = "Format")]
+   [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', '')]
    param(
       [Parameter(Mandatory = $false, ParameterSetName = "Full")]
       [Parameter(Mandatory = $false, ParameterSetName = "Format")]

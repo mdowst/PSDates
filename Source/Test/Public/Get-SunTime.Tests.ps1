@@ -5,7 +5,7 @@ BeforeAll {
     Import-Module $ModulePath.FullName -Force
 }
 
-Describe 'Get-SunTimes Tests' {
+Describe 'Get-SunTime Tests' {
     It '<Name> Test' -ForEach @(
         @{Name = 'Buckingham Palace'; Latitude = 51.501005; Longitude = -0.1445479; Elevation = 0; Sunrise = '03:52'; Sunset = '20:20' }
         @{Name = 'The Great Pyramid of Giza'; Latitude = 29.9791705; Longitude = 31.1316297; Elevation = 0; Sunrise = '03:00'; Sunset = '17:01' }
@@ -32,7 +32,7 @@ Describe 'Get-SunTimes Tests' {
             Elevation = $Elevation
             TimeZone  = $TimeZone
         }
-        $Result = Get-SunTimes @CalculateSunTimesParam
+        $Result = Get-SunTime @CalculateSunTimesParam
         $Result.Sunrise.ToString('HH:mm') | Should -Be $Sunrise
         $Result.Sunset.ToString('HH:mm') | Should -Be $Sunset
     }

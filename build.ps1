@@ -28,7 +28,13 @@ $ResourceFolder = Join-Path $psd1.DirectoryName 'Resources'
 New-Item -Path $ResourceFolder -ItemType Directory | Out-Null
 Copy-Item -Path '.\Source\Resources\CronExpressionDescriptor.dll' -Destination $ResourceFolder
 Copy-Item -Path '.\Source\Resources\ncrontab.3.3.0\lib\net35\NCrontab.dll' -Destination $ResourceFolder
+Copy-Item -Path '.\Source\Resources\ArgumentCompleters.ps1' -Destination $ResourceFolder
 
+@'
+# Argument Completers
+$ArgumentCompleters = Join-Path $PSScriptRoot 'Resources\ArgumentCompleters.ps1'
+. $ArgumentCompleters
+'@ | Out-File -LiteralPath $psm1.FullName -Append
 
 #$nuspec = Copy-Item -Path .\Source\PSDates.nuspec -Destination $psd1.DirectoryName -PassThru
 #.'nuget.exe' pack "$($nuspec.FullName)" -OutputDirectory .\Build -Version "$($VersionNumber)"

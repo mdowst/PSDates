@@ -71,9 +71,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>SunTimes</Name>
+      <Name>SunTime</Name>
       <ViewSelectedBy>
-        <TypeName>SunTimes</TypeName>
+        <TypeName>SunTime</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -111,9 +111,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>SunTimes</Name>
+      <Name>SunTime</Name>
       <ViewSelectedBy>
-        <TypeName>SunTimes</TypeName>
+        <TypeName>SunTime</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>

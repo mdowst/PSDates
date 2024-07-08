@@ -26,18 +26,11 @@ Function Get-DateFormat {
    [CmdletBinding(DefaultParameterSetName = "Full")]
    [OutputType([DateTimeFormats], ParameterSetName = "ID")]
    [OutputType([object], ParameterSetName = "Format")]
-   [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', '')]
    param(
       [Parameter(Mandatory = $false, ParameterSetName = "Full")]
       [Parameter(Mandatory = $false, ParameterSetName = "Format")]
       [datetime]$Date = $(Get-Date),
-      [ArgumentCompleter({
-            param($commandName, $parameterName, $wordToComplete)
-            [DateTimeFormats]::new().psobject.Properties.Name | foreach-object {
-               New-Object -TypeName System.Management.Automation.CompletionResult -ArgumentList "'$_'",
-               $_ , ([System.Management.Automation.CompletionResultType]::ParameterValue) , $_
-            }
-         })]
+
       [Parameter(Mandatory = $false, ParameterSetName = "Format")]
       [string]$Format
    )

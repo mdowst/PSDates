@@ -17,7 +17,7 @@ Describe 'Get-DateExtended Tests' {
         $dateExt.EndOfMonth | Should -Be (Get-Date '11/30/2017 23:59:59')
         $dateExt.WeekOfYear | Should -Be 46
         $dateExt.TimeZone | Should -Be ([System.TimeZoneInfo]::Local)
-        $dateExt.Quater | Should -Be 4
+        $dateExt.Quarter | Should -Be 4
         $dateExt.Date | Should -Be (Get-Date '11/17/2017 00:00:00')
         $dateExt.Day | Should -Be 17
         $dateExt.DayOfWeek | Should -Be 'Friday'

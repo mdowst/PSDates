@@ -1,7 +1,8 @@
-﻿$Public  = @( Get-ChildItem -Path (Join-Path $PSScriptRoot 'Public\*.ps1')  -Recurse -ErrorAction SilentlyContinue )
+﻿$ScriptsToImport  = @( Get-ChildItem -Path (Join-Path $PSScriptRoot 'Public\*.ps1')  -Recurse -ErrorAction SilentlyContinue ) +
+    @( Get-ChildItem -Path (Join-Path $PSScriptRoot 'Private\*.ps1')  -Recurse -ErrorAction SilentlyContinue )
 
 #Dot source the files
-Foreach ($import in $Public) {
+Foreach ($import in $ScriptsToImport) {
     Try {
         Write-Verbose "dot-sourcing file '$($import.fullname)'"
         . $import.fullname
@@ -10,5 +11,3 @@ Foreach ($import in $Public) {
         Write-Error -Message "Failed to import function $($import.fullname): $_"
     }
 }
-
-#Add-Type -Path (Join-Path $PSScriptRoot 'Resources\ncrontab.3.3.0\lib\net35\NCrontab.dll')

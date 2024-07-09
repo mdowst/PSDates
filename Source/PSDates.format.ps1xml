@@ -1,0 +1,188 @@
+<!-- Generated with EZOut 2.0.6: Install-Module EZOut or https://github.com/StartAutomating/EZOut -->
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>DateTimeExtended</Name>
+      <ViewSelectedBy>
+        <TypeName>DateTimeExtended</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>left</Alignment>
+            <Width>25</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>left</Alignment>
+            <Width>10</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>left</Alignment>
+            <Width>15</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartOfWeek</Label>
+            <Alignment>left</Alignment>
+            <Width>15</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndOfWeek</Label>
+            <Alignment>left</Alignment>
+            <Width>15</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartOfMonth</Label>
+            <Alignment>left</Alignment>
+            <Width>15</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndOfMonth</Label>
+            <Alignment>left</Alignment>
+            <Width>15</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Date</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>WeekOfYear</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DayOfWeek</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.EndOfWeek.ToShortDateString()</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.EndOfWeek.ToShortDateString()</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.StartOfMonth.ToShortDateString()</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.EndOfMonth.ToShortDateString()</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>SunTime</Name>
+      <ViewSelectedBy>
+        <TypeName>SunTime</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Date</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Sunrise</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Sunset</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DayLength</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock> $_.Sunrise.ToString('d') </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock> $_.Sunrise.ToString('t') </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock> $_.Sunset.ToString('t') </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock> "{0:N3} hours" -f $_.DayLength </ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>SunTime</Name>
+      <ViewSelectedBy>
+        <TypeName>SunTime</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Date</Label>
+                <ScriptBlock> $_.Sunrise.ToString('d') </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Sunrise</Label>
+                <ScriptBlock> $_.Sunrise.ToString('t') </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Sunset</Label>
+                <ScriptBlock> $_.Sunset.ToString('t') </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>DayLength</Label>
+                <ScriptBlock> "{0:N3} hours" -f $_.DayLength </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Latitude</Label>
+                <ScriptBlock> $_.ToDegreeString($_.Latitude) </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Longitude</Label>
+                <ScriptBlock> $_.ToDegreeString($_.Longitude) </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Now</Label>
+                <ScriptBlock> $_.FromTimestamp($_.Now, $_.TimeZone) </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>JulianDate</Label>
+                <ScriptBlock> "{0:N3} days" -f $_.JulianDate </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>JulianDay</Label>
+                <ScriptBlock> "{0:N3} days" -f $_.JulianDay </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>MeanSolarTime</Label>
+                <ScriptBlock> "{0:N9} days" -f $_.MeanSolarTime </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>SolarMeanAnomaly</Label>
+                <ScriptBlock> $_.ToDegreeString($_.SolarMeanAnomaly) </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>EquationOfTheCenter</Label>
+                <ScriptBlock> $_.ToDegreeString($_.EquationOfTheCenter) </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>EclipticLongitude</Label>
+                <ScriptBlock> $_.ToDegreeString($_.EclipticLongitude) </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>SolarTransitTime</Label>
+                <ScriptBlock> $_.FromTimestamp($_.JulianToTimestamp($_.SolarTransitTime), $_.TimeZone) </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>HourAngle</Label>
+                <ScriptBlock> $_.ToDegreeString($_.HourAngle) </ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-Short description
+Calculates the time span between two dates and returns the duration in the ISO 8601 format
 
 ## SYNTAX
 
@@ -33,7 +33,9 @@ New-Duration [-ProgressAction <ActionPreference>] [-Weeks <Int32>] [<CommonParam
 
 ## DESCRIPTION
 
-Long description
+Calculates the timespan between two dates and returns the duration in the ISO 8601 format
+
+https://en.wikipedia.org/wiki/ISO_8601#Durations
 
 
 ## EXAMPLES
@@ -41,7 +43,31 @@ Long description
 ### Example 1: EXAMPLE 1
 
 ```
-An example
+New-Duration -Start '2/3/2023' -End (Get-Date)
+```
+
+
+
+
+
+
+
+### Example 2: EXAMPLE 2
+
+```
+New-Duration -Days 1 -Hours 4
+```
+
+
+
+
+
+
+
+### Example 3: EXAMPLE 3
+
+```
+New-Duration -Weeks 3
 ```
 
 
@@ -55,7 +81,7 @@ An example
 
 ### -Days
 
-Parameter description
+Specifies the number for daily interval
 
 ```yaml
 Type: Int32
@@ -73,7 +99,8 @@ DontShow: False
 
 ### -End
 
-Parameter description
+Specifies the end of a time span.
+End date must be greater than the start date
 
 ```yaml
 Type: DateTime
@@ -91,7 +118,7 @@ DontShow: False
 
 ### -Hours
 
-Parameter description
+Specifies the number for hourly interval
 
 ```yaml
 Type: Int32
@@ -109,7 +136,7 @@ DontShow: False
 
 ### -Minutes
 
-Parameter description
+Specifies the number for minute interval
 
 ```yaml
 Type: Int32
@@ -127,7 +154,7 @@ DontShow: False
 
 ### -Months
 
-Parameter description
+Specifies the number for monthly interval
 
 ```yaml
 Type: Int32
@@ -163,7 +190,7 @@ DontShow: False
 
 ### -Seconds
 
-Parameter description
+Specifies the number for second interval
 
 ```yaml
 Type: Int32
@@ -181,7 +208,7 @@ DontShow: False
 
 ### -Start
 
-Parameter description
+Specifies the start of a time span.
 
 ```yaml
 Type: DateTime
@@ -199,7 +226,7 @@ DontShow: False
 
 ### -Weeks
 
-Parameter description
+Specifies the number for weekly interval
 
 ```yaml
 Type: Int32
@@ -217,7 +244,7 @@ DontShow: False
 
 ### -Years
 
-Parameter description
+Specifies the number for yearly interval
 
 ```yaml
 Type: Int32
@@ -245,7 +272,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-General notes
 
 
 ## RELATED LINKS

@@ -20,7 +20,7 @@ jobs:
         shell: pwsh
         run: |
           Set-PSRepository PSGallery -InstallationPolicy Trusted
-          Install-Module ModuleBuilder,PSScriptAnalyzer
+          Install-Module ModuleBuilder,PSScriptAnalyzer,EZOut
           Install-Module Pester -MinimumVersion 5.5.0
 
       - name: Run build

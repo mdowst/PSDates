@@ -24,6 +24,7 @@ Install-Module PSDates
 | [Get-DateFormat](docs/Get-DateFormat.md) | Returns common date and time formats |
 | [Get-Easter](docs/Get-Easter.md) | This function offers a generic Easter computing method for any given year, using Western, Orthodox or Julian algorithms. |
 | [Get-PatchTuesday](docs/Get-PatchTuesday.md) | Returns the second Tuesday of the month |
-| [New-Duration](docs/New-Duration.md) | Short description |
+| [Get-SunTime](docs/Get-SunTime.md) | Find sunrise and sunset times for any location on planet Earth. |
+| [New-Duration](docs/New-Duration.md) | Calculates the time span between two dates and returns the duration in the ISO 8601 format |
 | [Test-CrontabSchedule](docs/Test-CrontabSchedule.md) | Tests that a crontab string is valid |
 

@@ -13,10 +13,16 @@ Returns common date and time formats
 
 ## SYNTAX
 
-### __AllParameterSets
+### Full (Default)
 
 ```
-Get-DateFormat [[-Date <DateTime>]] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-DateFormat [-Date <DateTime>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### Format
+
+```
+Get-DateFormat [-Date <DateTime>] [-Format <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,13 +67,31 @@ The datetime value to return the formats for
 
 ```yaml
 Type: DateTime
-Parameter Sets: (All)
+Parameter Sets: Format, Full
 Aliases: 
 Accepted values: 
 
-Required: True (None) False (All)
-Position: 0
+Required: True (None) False (Format, Full)
+Position: Named
 Default value: $(Get-Date)
+Accept pipeline input: False
+Accept wildcard characters: False
+DontShow: False
+```
+
+### -Format
+
+{{ Fill Format Description }}
+
+```yaml
+Type: String
+Parameter Sets: Format
+Aliases: 
+Accepted values: 
+
+Required: True (None) False (Format)
+Position: Named
+Default value: 
 Accept pipeline input: False
 Accept wildcard characters: False
 DontShow: False

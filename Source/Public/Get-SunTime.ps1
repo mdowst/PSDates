@@ -40,10 +40,15 @@ Right click a specific point on the Google map and you will see the latitude and
 #>
     [CmdletBinding()]
     param (
+        [Parameter(Mandatory = $false)]
         [datetime]$Date = $(Get-Date),
+        [Parameter(Mandatory = $true)]
         [double]$Latitude,
+        [Parameter(Mandatory = $true)]
         [double]$Longitude,
+        [Parameter(Mandatory = $false)]
         [double]$Elevation = 0.0,
+        [Parameter(Mandatory = $false)]
         [TimeZoneInfo]$TimeZone = $null
     )
     $suntime = [SunTime]::new()

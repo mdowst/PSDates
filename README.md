@@ -13,6 +13,7 @@ Install-Module PSDates
 | Cmdlet | Synopsis |
 | ------ | -------- |
 | [Convert-TimeZone](docs/Convert-TimeZone.md) | Convert a datetime value from one time zone to another |
+| [Convert-ToDateTime](docs/Convert-ToDateTime.md) | Converts various input objects to a DateTime object. |
 | [ConvertFrom-UnixTime](docs/ConvertFrom-UnixTime.md) | Converts a Unix Time value to a datetime value |
 | [ConvertFrom-WmiDateTime](docs/ConvertFrom-WmiDateTime.md) | Converts a Wmi Time value to a datetime value |
 | [ConvertTo-UnixTime](docs/ConvertTo-UnixTime.md) | Converts a datetime value to Unix Time |
@@ -25,6 +26,8 @@ Install-Module PSDates
 | [Get-Easter](docs/Get-Easter.md) | This function offers a generic Easter computing method for any given year, using Western, Orthodox or Julian algorithms. |
 | [Get-PatchTuesday](docs/Get-PatchTuesday.md) | Returns the second Tuesday of the month |
 | [Get-SunTime](docs/Get-SunTime.md) | Find sunrise and sunset times for any location on planet Earth. |
+| [Group-TimeSpan](docs/Group-TimeSpan.md) | Groups objects by a specified time span. |
+| [Measure-TimeSpan](docs/Measure-TimeSpan.md) | Measures statistical properties (such as sum, average, and maximum) of a specified property within grouped time spans. |
 | [New-Duration](docs/New-Duration.md) | Calculates the time span between two dates and returns the duration in the ISO 8601 format |
 | [Test-CrontabSchedule](docs/Test-CrontabSchedule.md) | Tests that a crontab string is valid |
 

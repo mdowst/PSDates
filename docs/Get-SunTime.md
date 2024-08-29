@@ -16,7 +16,7 @@ Find sunrise and sunset times for any location on planet Earth.
 ### __AllParameterSets
 
 ```
-Get-SunTime [[-Date <DateTime>]] [[-Latitude <Double>]] [[-Longitude <Double>]] [[-Elevation <Double>]] [[-TimeZone <TimeZoneInfo>]] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-SunTime [[-Date <DateTime>]] [-Latitude] <Double> [-Longitude] <Double> [[-Elevation <Double>]] [[-TimeZone <String>]] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,7 +102,7 @@ Parameter Sets: (All)
 Aliases: 
 Accepted values: 
 
-Required: True (None) False (All)
+Required: True (All) False (None)
 Position: 1
 Default value: 0
 Accept pipeline input: False
@@ -120,7 +120,7 @@ Parameter Sets: (All)
 Aliases: 
 Accepted values: 
 
-Required: True (None) False (All)
+Required: True (All) False (None)
 Position: 2
 Default value: 0
 Accept pipeline input: False
@@ -151,7 +151,7 @@ DontShow: False
 The time zone for the final results
 
 ```yaml
-Type: TimeZoneInfo
+Type: String
 Parameter Sets: (All)
 Aliases: 
 Accepted values: 

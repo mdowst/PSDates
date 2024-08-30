@@ -36,18 +36,19 @@ function Convert-ToDateTime {
     )
 
     process {
+        $Return = $null
         try {
             # Attempt to convert directly if input is already a DateTime or string
             if ($InputObject -is [DateTime]) {
-                return [DateTime]$InputObject
+                $Return = $InputObject
             }
             elseif ($InputObject -is [string]) {
                 try{
-                    Get-Date $InputObject -ErrorAction Stop
+                    $Return = Get-Date $InputObject -ErrorAction Stop
                 }
                 catch{
                 # Attempt to parse string input to DateTime
-                [DateTime]::ParseExact($InputObject, 
+                $Return = [DateTime]::ParseExact($InputObject, 
                     [System.Globalization.CultureInfo]::InvariantCulture.DateTimeFormat.GetAllDateTimePatterns(), 
                     [System.Globalization.CultureInfo]::InvariantCulture, 
                     [System.Globalization.DateTimeStyles]::None) -as [DateTime]
@@ -55,14 +56,14 @@ function Convert-ToDateTime {
             }
             else {
                 # Attempt conversion for other types using their string representation
-                [DateTime]::Parse($InputObject.ToString(), 
+                $Return = [DateTime]::Parse($InputObject.ToString(), 
                     [System.Globalization.CultureInfo]::InvariantCulture) -as [DateTime]
             }
         }
         catch {
-            # Return null if conversion fails
+            # Return error if conversion fails
             Write-Error "Unable to convert '$InputObject' to DateTime."
-            return $null
         }
+        $Return
     }
 }

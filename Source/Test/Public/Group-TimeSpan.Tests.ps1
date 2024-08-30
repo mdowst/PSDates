@@ -8,62 +8,62 @@ BeforeAll {
 Describe 'Group-TimeSpan Tests' {
     BeforeEach {
         $TestDates = @(
-            [pscustomobject]@{StartTime = [datetime]'2015-01-15T17:10:57Z'; Total = 2 }
-            [pscustomobject]@{StartTime = [datetime]'2015-02-20T00:59:37Z'; Total = 2 }
-            [pscustomobject]@{StartTime = [datetime]'2019-03-05T10:21:36Z'; Total = 2 }
-            [pscustomobject]@{StartTime = [datetime]'2019-04-10T04:14:39Z'; Total = 2 }
-            [pscustomobject]@{StartTime = [datetime]'2020-05-25T22:45:54Z'; Total = 2 }
-            [pscustomobject]@{StartTime = [datetime]'2020-06-30T01:16:43Z'; Total = 2 }
-            [pscustomobject]@{StartTime = [datetime]'2021-07-15T15:33:09Z'; Total = 2 }
-            [pscustomobject]@{StartTime = [datetime]'2021-08-10T18:40:37Z'; Total = 2 }
-            [pscustomobject]@{StartTime = [datetime]'2022-09-01T19:53:41Z'; Total = 2 }
-            [pscustomobject]@{StartTime = [datetime]'2022-10-15T16:10:54Z'; Total = 2 }
-            [pscustomobject]@{StartTime = [datetime]'2023-01-15T14:47:38Z'; Total = 2 }
-            [pscustomobject]@{StartTime = [datetime]'2023-02-20T10:26:54Z'; Total = 2 }
-            [pscustomobject]@{StartTime = [datetime]'2023-03-05T18:56:03Z'; Total = 2 }
-            [pscustomobject]@{StartTime = [datetime]'2023-04-10T22:48:28Z'; Total = 2 }
-            [pscustomobject]@{StartTime = [datetime]'2023-05-25T05:17:59Z'; Total = 2 }
-            [pscustomobject]@{StartTime = [datetime]'2023-06-30T19:26:08Z'; Total = 2 }
-            [pscustomobject]@{StartTime = [datetime]'2023-07-15T16:24:47Z'; Total = 2 }
-            [pscustomobject]@{StartTime = [datetime]'2023-08-10T21:01:22Z'; Total = 2 }
-            [pscustomobject]@{StartTime = [datetime]'2023-09-01T04:51:36Z'; Total = 2 }
-            [pscustomobject]@{StartTime = [datetime]'2023-10-15T14:17:39Z'; Total = 2 }
+            [pscustomobject]@{StartTime = [dateTime]::new(2015, 01, 15, 17, 10, 57, 0, 0, 1); Total = 2 }
+            [pscustomobject]@{StartTime = [dateTime]::new(2015, 02, 20, 0, 59, 37, 0, 0, 1); Total = 2 }
+            [pscustomobject]@{StartTime = [dateTime]::new(2019, 03, 05, 10, 21, 36, 0, 0, 1); Total = 2 }
+            [pscustomobject]@{StartTime = [dateTime]::new(2019, 04, 10, 4, 14, 39, 0, 0, 1); Total = 2 }
+            [pscustomobject]@{StartTime = [dateTime]::new(2020, 05, 25, 22, 45, 54, 0, 0, 1); Total = 2 }
+            [pscustomobject]@{StartTime = [dateTime]::new(2020, 06, 30, 1, 16, 43, 0, 0, 1); Total = 2 }
+            [pscustomobject]@{StartTime = [dateTime]::new(2021, 07, 15, 15, 33, 09, 0, 0, 1); Total = 2 }
+            [pscustomobject]@{StartTime = [dateTime]::new(2021, 08, 10, 18, 40, 37, 0, 0, 1); Total = 2 }
+            [pscustomobject]@{StartTime = [dateTime]::new(2022, 09, 01, 19, 53, 41, 0, 0, 1); Total = 2 }
+            [pscustomobject]@{StartTime = [dateTime]::new(2022, 10, 15, 16, 10, 54, 0, 0, 1); Total = 2 }
+            [pscustomobject]@{StartTime = [dateTime]::new(2023, 01, 15, 14, 47, 38, 0, 0, 1); Total = 2 }
+            [pscustomobject]@{StartTime = [dateTime]::new(2023, 02, 20, 10, 26, 54, 0, 0, 1); Total = 2 }
+            [pscustomobject]@{StartTime = [dateTime]::new(2023, 03, 05, 18, 56, 03, 0, 0, 1); Total = 2 }
+            [pscustomobject]@{StartTime = [dateTime]::new(2023, 04, 10, 22, 48, 28, 0, 0, 1); Total = 2 }
+            [pscustomobject]@{StartTime = [dateTime]::new(2023, 05, 25, 5, 17, 59, 0, 0, 1); Total = 2 }
+            [pscustomobject]@{StartTime = [dateTime]::new(2023, 06, 30, 19, 26, 08, 0, 0, 1); Total = 2 }
+            [pscustomobject]@{StartTime = [dateTime]::new(2023, 07, 15, 16, 24, 47, 0, 0, 1); Total = 2 }
+            [pscustomobject]@{StartTime = [dateTime]::new(2023, 08, 10, 21, 01, 22, 0, 0, 1); Total = 2 }
+            [pscustomobject]@{StartTime = [dateTime]::new(2023, 09, 01,  4, 51, 36, 0, 0, 1); Total = 2 }
+            [pscustomobject]@{StartTime = [dateTime]::new(2023, 10, 15, 14, 17, 39, 0, 0, 1); Total = 2 }
         )
     }
     
     It 'Group-TimeSpan Hours' {
         $TestDates | ForEach-Object {
-            $_.StartTime = Get-Date $_.StartTime -Month 1 -Day 1 -Year 2023
+            $_.StartTime = [dateTime]::new(2023, 1, 1, $_.StartTime.Hour, $_.StartTime.Minute, $_.StartTime.Second , 0, 0, 1)
         }
         
-        $FiveHours = $TestDates | Group-TimeSpan -Property 'StartTime' -Hours 5 -Round
-        $FiveHours[0].DateTime | Should -Be ([datetime]'2023-01-01T00:00:00.0000000')
-        $FiveHours[0].Count | Should -Be 3
-        $FiveHours[1].DateTime | Should -Be ([datetime]'2023-01-01T05:00:00.0000000')
-        $FiveHours[1].Count | Should -Be 2
-        $FiveHours[2].DateTime | Should -Be ([datetime]'2023-01-01T10:00:00.0000000')
-        $FiveHours[2].Count | Should -Be 8
-        $FiveHours[3].DateTime | Should -Be ([datetime]'2023-01-01T15:00:00.0000000')
-        $FiveHours[3].Count | Should -Be 4
-        $FiveHours[4].DateTime | Should -Be ([datetime]'2023-01-01T20:00:00.0000000')
-        $FiveHours[4].Count | Should -Be 3
+        $Results = $TestDates | Group-TimeSpan -Property 'StartTime' -Hours 5 -Round
+        $Results[0].DateTime | Should -Be ([datetime]'2023-01-01T00:00:00.0000000')
+        $Results[0].Count | Should -Be 4
+        $Results[1].DateTime | Should -Be ([datetime]'2023-01-01T05:00:00.0000000')
+        $Results[1].Count | Should -Be 1
+        $Results[2].DateTime | Should -Be ([datetime]'2023-01-01T10:00:00.0000000')
+        $Results[2].Count | Should -Be 4
+        $Results[3].DateTime | Should -Be ([datetime]'2023-01-01T15:00:00.0000000')
+        $Results[3].Count | Should -Be 8
+        $Results[4].DateTime | Should -Be ([datetime]'2023-01-01T20:00:00.0000000')
+        $Results[4].Count | Should -Be 3
 
-        $FiveHours = $TestDates | Group-TimeSpan -Property 'StartTime' -Hours 5
-        $FiveHours[0].DateTime | Should -Be ([datetime]'2023-01-01T03:51:36.0000000')
-        $FiveHours[0].Count | Should -Be 1
-        $FiveHours[1].DateTime | Should -Be ([datetime]'2023-01-01T08:51:36.0000000')
-        $FiveHours[1].Count | Should -Be 3
-        $FiveHours[2].DateTime | Should -Be ([datetime]'2023-01-01T13:51:36.0000000')
-        $FiveHours[2].Count | Should -Be 7
-        $FiveHours[3].DateTime | Should -Be ([datetime]'2023-01-01T18:51:36.0000000')
-        $FiveHours[3].Count | Should -Be 5
-        $FiveHours[4].DateTime | Should -Be ([datetime]'2023-01-01T23:51:36.0000000')
-        $FiveHours[4].Count | Should -Be 4
+        $Results = $TestDates | Group-TimeSpan -Property 'StartTime' -Hours 5
+        $Results[0].DateTime | Should -Be ([datetime]'2023-01-01T02:48:28.0000000')
+        $Results[0].Count | Should -Be 2
+        $Results[1].DateTime | Should -Be ([datetime]'2023-01-01T07:48:28.0000000')
+        $Results[1].Count | Should -Be 3
+        $Results[2].DateTime | Should -Be ([datetime]'2023-01-01T12:48:28.0000000')
+        $Results[2].Count | Should -Be 2
+        $Results[3].DateTime | Should -Be ([datetime]'2023-01-01T17:48:28.0000000')
+        $Results[3].Count | Should -Be 6
+        $Results[4].DateTime | Should -Be ([datetime]'2023-01-01T22:48:28.0000000')
+        $Results[4].Count | Should -Be 7
     }
 
     It 'Group-TimeSpan Minutes' {
         $TestDates | ForEach-Object {
-            $_.StartTime = Get-Date $_.StartTime -Month 1 -Day 1 -Year 2023 -Hour 6
+            $_.StartTime = [dateTime]::new(2023, 1, 1, 6, $_.StartTime.Minute, $_.StartTime.Second , 0, 0, 1)
         }
         
         $Results = $TestDates | Group-TimeSpan -Property 'StartTime' -Minutes 5 -Round
@@ -113,7 +113,7 @@ Describe 'Group-TimeSpan Tests' {
 
     It 'Group-TimeSpan Seconds' {
         $TestDates | ForEach-Object {
-            $_.StartTime = Get-Date $_.StartTime -Month 1 -Day 1 -Year 2023 -Hour 6 -Minute 23
+            $_.StartTime = [dateTime]::new(2023, 1, 1, 6, 23, $_.StartTime.Second , 0, 0, 1)
         }
         
         $Results = $TestDates | Group-TimeSpan -Property 'StartTime' -Seconds 5 -Round
@@ -159,12 +159,12 @@ Describe 'Group-TimeSpan Tests' {
 
     It 'Group-TimeSpan Days' {
         $TestDates | ForEach-Object {
-            $_.StartTime = Get-Date $_.StartTime -Month 1 -Year 2023
+            $_.StartTime = [dateTime]::new(2023, 1, $_.StartTime.Day, $_.StartTime.Hour, $_.StartTime.Minute, $_.StartTime.Second , 0, 0, 1)
         }
         
         $Results = $TestDates | Group-TimeSpan -Property 'StartTime' -Days 5 -Round
         $Results[0].DateTime | Should -Be ([datetime]'2023-01-01T00:00:00.0000000')
-        $Results[0].Count | Should -Be 3
+        $Results[0].Count | Should -Be 4
         $Results[1].DateTime | Should -Be ([datetime]'2023-01-06T00:00:00.0000000')
         $Results[1].Count | Should -Be 4
         $Results[2].DateTime | Should -Be ([datetime]'2023-01-11T00:00:00.0000000')
@@ -175,29 +175,25 @@ Describe 'Group-TimeSpan Tests' {
         $Results[4].Count | Should -Be 2
         $Results[5].DateTime | Should -Be ([datetime]'2023-01-26T00:00:00.0000000')
         $Results[5].Count | Should -Be 2
-        $Results[6].DateTime | Should -Be ([datetime]'2023-01-31T00:00:00.0000000')
-        $Results[6].Count | Should -Be 1
 
         $Results = $TestDates | Group-TimeSpan -Property 'StartTime' -Days 5
-        $Results[0].DateTime | Should -Be ([datetime]'2023-01-01T23:51:36.0000000')
-        $Results[0].Count | Should -Be 1
-        $Results[1].DateTime | Should -Be ([datetime]'2023-01-06T23:51:36.0000000')
+        $Results[0].DateTime | Should -Be ([datetime]'2023-01-05T19:26:08.0000000')
+        $Results[0].Count | Should -Be 4
+        $Results[1].DateTime | Should -Be ([datetime]'2023-01-10T19:26:08.0000000')
         $Results[1].Count | Should -Be 2
-        $Results[2].DateTime | Should -Be ([datetime]'2023-01-11T23:51:36.0000000')
-        $Results[2].Count | Should -Be 4
-        $Results[3].DateTime | Should -Be ([datetime]'2023-01-16T23:51:36.0000000')
-        $Results[3].Count | Should -Be 6
-        $Results[4].DateTime | Should -Be ([datetime]'2023-01-21T23:51:36.0000000')
-        $Results[4].Count | Should -Be 2
-        $Results[5].DateTime | Should -Be ([datetime]'2023-01-26T23:51:36.0000000')
-        $Results[5].Count | Should -Be 2
-        $Results[6].DateTime | Should -Be ([datetime]'2023-01-31T23:51:36.0000000')
-        $Results[6].Count | Should -Be 3
+        $Results[2].DateTime | Should -Be ([datetime]'2023-01-15T19:26:08.0000000')
+        $Results[2].Count | Should -Be 8
+        $Results[3].DateTime | Should -Be ([datetime]'2023-01-20T19:26:08.0000000')
+        $Results[3].Count | Should -Be 2
+        $Results[4].DateTime | Should -Be ([datetime]'2023-01-25T19:26:08.0000000')
+        $Results[4].Count | Should -Be 1
+        $Results[5].DateTime | Should -Be ([datetime]'2023-01-30T19:26:08.0000000')
+        $Results[5].Count | Should -Be 3
     }
 
     It 'Group-TimeSpan Months' {
         $TestDates | ForEach-Object {
-            $_.StartTime = Get-Date $_.StartTime -Year 2023
+            $_.StartTime = [dateTime]::new(2023, $_.StartTime.Month, $_.StartTime.Day, $_.StartTime.Hour, $_.StartTime.Minute, $_.StartTime.Second , 0, 0, 1)
         }
         
         $Results = $TestDates | Group-TimeSpan -Property 'StartTime' -Months 3

@@ -59,6 +59,9 @@ Returns an array of GroupTimeSpan objects.
         [Parameter(Mandatory = $false)]
         [string]$Property = $null,
 
+        [Parameter(Mandatory = $false)]
+        [switch]$IncludeAllTimes = $false,
+
         [Parameter(Mandatory = $true, ParameterSetName = "Years")]
         [int]$Years,
         [Parameter(Mandatory = $true, ParameterSetName = "Months")]
@@ -126,6 +129,28 @@ Returns an array of GroupTimeSpan objects.
         [GroupTimeSpan[]]$output = $groupedDates | ForEach-Object {
             [GroupTimeSpan]::new($_)
         }
+
+        if($IncludeAllTimes){
+            $FirstTime = $output | Sort-Object DateTime | Select-Object -First 1 -ExpandProperty DateTime | Select-Object -ExpandProperty Ticks
+            $LastTime = $output | Sort-Object DateTime | Select-Object -Last 1 -ExpandProperty DateTime | Select-Object -ExpandProperty Ticks
+            $blankTimes = while($FirstTime -lt $LastTime){
+                $toAdd = [GroupTimeSpan]::new($FirstTime, 0)
+                if($output.DateTime -notcontains $toAdd.DateTime){
+                    $toAdd
+                }
+                if ($PSBoundParameters['Months']) {
+                    $FirstTime = $toAdd.DateTime.AddMonths($Months).Ticks
+                }
+                elseif ($PSBoundParameters['Years']) {
+                    $FirstTime = $toAdd.DateTime.AddMonths($Years * 12).Ticks
+                }
+                else{
+                    $FirstTime += $ticks
+                }
+            }
+            $output = @($output) + $($blankTimes)
+        }
+
         $output | Sort-Object DateTime
     }
 }

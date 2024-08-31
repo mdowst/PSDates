@@ -16,4 +16,10 @@ class TimeSpanMeasureInfo {
         if($Measure.Maximum){$this.Maximum = $Measure.Maximum}
         if($Measure.Minimum){$this.Minimum = $Measure.Minimum}       
     }
+
+    TimeSpanMeasureInfo([datetime]$DateTime, [string]$Property, [int]$count) {
+        $this.DateTime = $DateTime
+        $this.Property = $Property
+        $this.Count = $count      
+    }
 }

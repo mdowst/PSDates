@@ -79,7 +79,19 @@ Function Measure-TimeSpan {
     process {
         $GroupTimeSpan | Foreach-Object { 
             $m = $_.Group | Measure-Object @MeasureParameters
-            $objects.Add([TimeSpanMeasureInfo]::new($_.DateTime, $m))
+            if($m){
+                $objects.Add([TimeSpanMeasureInfo]::new($_.DateTime, $m))
+            }
+            else{
+                $blankFill = [TimeSpanMeasureInfo]::new($_.DateTime, $Property, $_.Count)
+                if($Average){$blankFill.Average = 0}
+                if($Sum){$blankFill.Sum = 0}
+                if($Maximum){$blankFill.Maximum = 0}
+                if($Minimum){$blankFill.Minimum = 0}
+                $objects.Add($blankFill)
+            }
+
+             
         }
     }
 

@@ -31,18 +31,15 @@ Specifies the number of minutes to group by.
 .PARAMETER Seconds
 Specifies the number of seconds to group by.
 
-.PARAMETER Round
-Specifies to round the date to the top of the day, hour, or minute. Only used with Days, Hours, Minutes, and Seconds parameters
-
 .EXAMPLE
 Get-ChildItem $PSHOME | Group-TimeSpan -Property CreationTime -Hours 1
 
 Groups the files by each hour based on their CreationTime.
 
 .EXAMPLE
-Get-ChildItem $PSHOME | Group-TimeSpan -Property CreationTime -Hours 1 -Round
+Get-ChildItem $PSHOME | Group-TimeSpan -Property CreationTime -Days 7
 
-Groups the files by each hour based on their CreationTime and rounds to the top of the hour.
+Groups the files by 7 days based on their CreationTime.
 
 .OUTPUTS
 GroupTimeSpan[]
@@ -60,13 +57,7 @@ Returns an array of GroupTimeSpan objects.
         [object]$InputObject,
 
         [Parameter(Mandatory = $false)]
-        [string]$Property,
-
-        [Parameter(Mandatory = $false, ParameterSetName = "Days")]
-        [Parameter(Mandatory = $false, ParameterSetName = "Hours")]
-        [Parameter(Mandatory = $false, ParameterSetName = "Minutes")]
-        [Parameter(Mandatory = $false, ParameterSetName = "Seconds")]
-        [switch]$Round = $false,
+        [string]$Property = $null,
 
         [Parameter(Mandatory = $true, ParameterSetName = "Years")]
         [int]$Years,
@@ -83,8 +74,9 @@ Returns an array of GroupTimeSpan objects.
     )
 
     begin {
+        $Null = $Years,  $Months # Prevent PSReviewUnusedParameter false positive
         [Collections.Generic.List[PSObject]] $objects = @()
-        switch($PsCmdlet.ParameterSetName){
+        switch ($PsCmdlet.ParameterSetName) {
             "Days" { $ticks = 36000000000 * 24 * $Days }
             "Hours" { $ticks = 36000000000 * $Hours }
             "Minutes" { $ticks = 600000000 * $Minutes }
@@ -95,55 +87,45 @@ Returns an array of GroupTimeSpan objects.
 
     process {
         $InputObject | Foreach-Object { 
-            if($PSBoundParameters['Property']){
+            if (-not [string]::IsNullOrEmpty( $Property )) {
                 $timeValue = $_.$Property
             }
-            else{
+            else {
                 $timeValue = $_
             }
             $objects.Add([pscustomobject]@{
-                TimeProperty = $timeValue | Convert-ToDateTime
-                Object = $_
-            })
+                    TimeProperty = $timeValue | Convert-ToDateTime
+                    Object       = $_
+                })
         }
     }
 
 
     end {
-        if($PSBoundParameters['Months'] -or $PSBoundParameters['Years']){
-            $min = $objects | Sort-Object TimeProperty | Select-Object -First 1 -ExpandProperty TimeProperty
-        }
-        elseif(-not $Round){
-            $max = $objects | Sort-Object TimeProperty | Select-Object -Last 1 -ExpandProperty TimeProperty
-        }
+        $min = [datetime]::MinValue
         $groupedDates = $objects | Group-Object {
-            if($PSBoundParameters['Months']){
+            if ($PSBoundParameters['Months']) {
                 # Monthly
                 $monthsDifference = (($_.TimeProperty.Year - $min.Year) * 12 + $_.TimeProperty.Month - $min.Month)
-                $groupStartMonth = [math]::Floor($monthsDifference / $PSBoundParameters['Months']) * $PSBoundParameters['Months']
+                $groupStartMonth = [math]::Floor($monthsDifference / $Months) * $Months
                 $month = $min.AddMonths($groupStartMonth)
                 (Get-Date -Year $month.Year -Month $month.Month -day 1 -hour 0 -minute 0 -second 0 -Millisecond 0).Ticks
             }
-            elseif($PSBoundParameters['Years']){
+            elseif ($PSBoundParameters['Years']) {
                 # Yearly
                 $yearDifference = $_.TimeProperty.Year - $min.Year
-                $groupStartYear = [math]::Floor($yearDifference / $PSBoundParameters['Years']) * $PSBoundParameters['Years']
+                $groupStartYear = [math]::Floor($yearDifference / $Years) * $Years
                 $year = $min.AddMonths($groupStartYear * 12)
                 (Get-Date -Year $year.Year -Month 1 -day 1 -hour 0 -minute 0 -second 0 -Millisecond 0).Ticks
             }
-            elseif($Round){
-                # Rounded
-                $_.TimeProperty.Ticks - ($_.TimeProperty.Ticks % $ticks)
-            }
-            else{
-                # Not Rounded
-                $max.Ticks - (($max.Ticks - $_.TimeProperty.Ticks) - (($max.Ticks - $_.TimeProperty.Ticks) % $ticks))
+            else {
+                $min.Ticks - (($min.Ticks - $_.TimeProperty.Ticks) - (($min.Ticks - $_.TimeProperty.Ticks) % $ticks))
             }
         }
 
-        [GroupTimeSpan[]]$output = $groupedDates | Sort-Object Name | ForEach-Object{
+        [GroupTimeSpan[]]$output = $groupedDates | ForEach-Object {
             [GroupTimeSpan]::new($_)
         }
-        $output
+        $output | Sort-Object DateTime
     }
 }

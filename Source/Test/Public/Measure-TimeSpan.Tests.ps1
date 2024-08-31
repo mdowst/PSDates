@@ -15,7 +15,7 @@ Describe 'Measure-TimeSpan' {
             [PSCustomObject]@{ Property = 20; TimeSpan = "2024-08-01T01:00:00" },
             [PSCustomObject]@{ Property = 30; TimeSpan = "2024-08-01T02:00:00" }
         )
-        $groupedData = $TestDates | Group-TimeSpan -Property 'TimeSpan' -Days 1 -Round
+        $groupedData = $TestDates | Group-TimeSpan -Property 'TimeSpan' -Days 1
     }
 
     Context 'Sum Calculation' {

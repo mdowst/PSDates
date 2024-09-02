@@ -7,11 +7,11 @@ Function Measure-TimeSpan {
     The `Measure-TimeSpan` function calculates various statistical measures (sum, average, maximum, minimum) for a specified property across a collection of grouped time spans.
     It is designed to work with objects grouped by the `Group-TimeSpan` function, focusing on numerical properties for aggregation.
 
-.PARAMETER GroupTimeSpan
+.PARAMETER TimeSpanGroupInfo
     Specifies the input objects that represent grouped time spans. This parameter accepts pipeline input and is mandatory.
 
 .PARAMETER Property
-    Specifies the property name of the GroupTimeSpan objects to measure. This property should be numeric and is mandatory.
+    Specifies the property name of the TimeSpanGroupInfo objects to measure. This property should be numeric and is mandatory.
 
 .PARAMETER Sum
     Switch parameter that, when specified, calculates the sum of the specified property across all input objects.
@@ -38,7 +38,7 @@ Function Measure-TimeSpan {
     Measures the sum and average size of files grouped by each hour based on their CreationTime.
 
 .INPUTS
-    GroupTimeSpan[]
+    TimeSpanGroupInfo[]
     The function accepts grouped time span objects from the pipeline.
 
 .OUTPUTS
@@ -53,7 +53,7 @@ Function Measure-TimeSpan {
             ValueFromPipeline = $true,
             Mandatory = $true
         )]
-        [GroupTimeSpan[]]$GroupTimeSpan,
+        [TimeSpanGroupInfo[]]$TimeSpanGroupInfo,
 
         [Parameter(Mandatory = $true)]
         [string]$Property,
@@ -71,13 +71,13 @@ Function Measure-TimeSpan {
     begin {
         [Collections.Generic.List[TimeSpanMeasureInfo]] $objects = @()
         $MeasureParameters = @{}
-        $PSBoundParameters.GetEnumerator() | Where-Object { $_.Key -ne 'GroupTimeSpan' } | ForEach-Object {
+        $PSBoundParameters.GetEnumerator() | Where-Object { $_.Key -ne 'TimeSpanGroupInfo' } | ForEach-Object {
             $MeasureParameters.Add($_.Key, $_.Value)
         }
     }
 
     process {
-        $GroupTimeSpan | Foreach-Object { 
+        $TimeSpanGroupInfo | Foreach-Object { 
             $m = $_.Group | Measure-Object @MeasureParameters
             if($m){
                 $objects.Add([TimeSpanMeasureInfo]::new($_.DateTime, $m))

@@ -11,10 +11,10 @@ class TimeSpanMeasureInfo {
         $this.DateTime = $DateTime
         $this.Property = $Measure.Property
         $this.Count = $Measure.Count
-        if($Measure.Average){$this.Average = $Measure.Average}
-        if($Measure.Sum){$this.Sum = $Measure.Sum}
-        if($Measure.Maximum){$this.Maximum = $Measure.Maximum}
-        if($Measure.Minimum){$this.Minimum = $Measure.Minimum}       
+        if($null -ne $Measure.Average){$this.Average = $Measure.Average}
+        if($null -ne $Measure.Sum){$this.Sum = $Measure.Sum}
+        if($null -ne $Measure.Maximum){$this.Maximum = $Measure.Maximum}
+        if($null -ne $Measure.Minimum){$this.Minimum = $Measure.Minimum}       
     }
 
     TimeSpanMeasureInfo([datetime]$DateTime, [string]$Property, [int]$count) {

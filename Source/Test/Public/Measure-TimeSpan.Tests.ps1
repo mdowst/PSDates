@@ -9,7 +9,7 @@ Describe 'Measure-TimeSpan' {
 
     # Sample data to be used in tests
     BeforeAll {
-        # Mock GroupTimeSpan data for testing
+        # Mock TimeSpanGroupInfo data for testing
         $TestDates = @(
             [PSCustomObject]@{ Property = 10; TimeSpan = "2024-08-01T00:00:00" },
             [PSCustomObject]@{ Property = 20; TimeSpan = "2024-08-01T01:00:00" },

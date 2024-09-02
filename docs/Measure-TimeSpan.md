@@ -16,7 +16,7 @@ Measures statistical properties (such as sum, average, and maximum) of a specifi
 ### __AllParameterSets
 
 ```
-Measure-TimeSpan [-GroupTimeSpan] <GroupTimeSpan[]> [-Property] <String> [-Average] [-Maximum] [-Minimum] [-ProgressAction <ActionPreference>] [-Sum] [<CommonParameters>]
+Measure-TimeSpan [-TimeSpanGroupInfo] <TimeSpanGroupInfo[]> [-Property] <String> [-Average] [-Maximum] [-Minimum] [-ProgressAction <ActionPreference>] [-Sum] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,13 +74,13 @@ Accept wildcard characters: False
 DontShow: False
 ```
 
-### -GroupTimeSpan
+### -TimeSpanGroupInfo
 
 Specifies the input objects that represent grouped time spans.
 This parameter accepts pipeline input and is mandatory.
 
 ```yaml
-Type: GroupTimeSpan[]
+Type: TimeSpanGroupInfo[]
 Parameter Sets: (All)
 Aliases: 
 Accepted values: 
@@ -149,7 +149,7 @@ DontShow: False
 
 ### -Property
 
-Specifies the property name of the GroupTimeSpan objects to measure.
+Specifies the property name of the TimeSpanGroupInfo objects to measure.
 This property should be numeric and is mandatory.
 
 ```yaml
@@ -191,17 +191,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### GroupTimeSpan[]
+### TimeSpanGroupInfo[]
 The function accepts grouped time span objects from the pipeline.
 
 
-## OUTPUTS
+
+## OUTPUTS
 
 ### TimeSpanMeasureInfo[]
 Returns the calculated statistical value(s) based on the input and specified parameters.
 
 
-## NOTES
+
+## NOTES
 
 
 

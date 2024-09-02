@@ -274,11 +274,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### GroupTimeSpan[]
-Returns an array of GroupTimeSpan objects.
+### TimeSpanGroupInfo[]
+Returns an array of TimeSpanGroupInfo objects.
 
 
-## NOTES
+
+## NOTES
 
 
 

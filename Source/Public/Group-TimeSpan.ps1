@@ -42,11 +42,11 @@ Get-ChildItem $PSHOME | Group-TimeSpan -Property CreationTime -Days 7
 Groups the files by 7 days based on their CreationTime.
 
 .OUTPUTS
-GroupTimeSpan[]
-Returns an array of GroupTimeSpan objects.
+TimeSpanGroupInfo[]
+Returns an array of TimeSpanGroupInfo objects.
 #>
     [CmdletBinding()]
-    [OutputType([GroupTimeSpan[]])]
+    [OutputType([TimeSpanGroupInfo[]])]
     param (
         [Parameter(
             ValueFromPipeline = $true,
@@ -126,15 +126,15 @@ Returns an array of GroupTimeSpan objects.
             }
         }
 
-        [GroupTimeSpan[]]$output = $groupedDates | ForEach-Object {
-            [GroupTimeSpan]::new($_)
+        [TimeSpanGroupInfo[]]$output = $groupedDates | ForEach-Object {
+            [TimeSpanGroupInfo]::new($_)
         }
 
         if($IncludeAllTimes){
             $FirstTime = $output | Sort-Object DateTime | Select-Object -First 1 -ExpandProperty DateTime | Select-Object -ExpandProperty Ticks
             $LastTime = $output | Sort-Object DateTime | Select-Object -Last 1 -ExpandProperty DateTime | Select-Object -ExpandProperty Ticks
             $blankTimes = while($FirstTime -lt $LastTime){
-                $toAdd = [GroupTimeSpan]::new($FirstTime, 0)
+                $toAdd = [TimeSpanGroupInfo]::new($FirstTime, 0)
                 if($output.DateTime -notcontains $toAdd.DateTime){
                     $toAdd
                 }

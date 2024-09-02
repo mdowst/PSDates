@@ -13,40 +13,40 @@ Groups objects by a specified time span.
 
 ## SYNTAX
 
-### Seconds
-
-```
-Group-TimeSpan -InputObject <Object> -Seconds <Int32> [-ProgressAction <ActionPreference>] [-Property <String>] [-Round] [<CommonParameters>]
-```
-
-### Minutes
-
-```
-Group-TimeSpan -InputObject <Object> -Minutes <Int32> [-ProgressAction <ActionPreference>] [-Property <String>] [-Round] [<CommonParameters>]
-```
-
-### Hours
-
-```
-Group-TimeSpan -Hours <Int32> -InputObject <Object> [-ProgressAction <ActionPreference>] [-Property <String>] [-Round] [<CommonParameters>]
-```
-
-### Days
-
-```
-Group-TimeSpan -Days <Int32> -InputObject <Object> [-ProgressAction <ActionPreference>] [-Property <String>] [-Round] [<CommonParameters>]
-```
-
 ### Years
 
 ```
-Group-TimeSpan -InputObject <Object> -Years <Int32> [-ProgressAction <ActionPreference>] [-Property <String>] [<CommonParameters>]
+Group-TimeSpan -InputObject <Object> -Years <Int32> [-IncludeAllTimes] [-ProgressAction <ActionPreference>] [-Property <String>] [<CommonParameters>]
 ```
 
 ### Months
 
 ```
-Group-TimeSpan -InputObject <Object> -Months <Int32> [-ProgressAction <ActionPreference>] [-Property <String>] [<CommonParameters>]
+Group-TimeSpan -InputObject <Object> -Months <Int32> [-IncludeAllTimes] [-ProgressAction <ActionPreference>] [-Property <String>] [<CommonParameters>]
+```
+
+### Days
+
+```
+Group-TimeSpan -Days <Int32> -InputObject <Object> [-IncludeAllTimes] [-ProgressAction <ActionPreference>] [-Property <String>] [<CommonParameters>]
+```
+
+### Hours
+
+```
+Group-TimeSpan -Hours <Int32> -InputObject <Object> [-IncludeAllTimes] [-ProgressAction <ActionPreference>] [-Property <String>] [<CommonParameters>]
+```
+
+### Minutes
+
+```
+Group-TimeSpan -InputObject <Object> -Minutes <Int32> [-IncludeAllTimes] [-ProgressAction <ActionPreference>] [-Property <String>] [<CommonParameters>]
+```
+
+### Seconds
+
+```
+Group-TimeSpan -InputObject <Object> -Seconds <Int32> [-IncludeAllTimes] [-ProgressAction <ActionPreference>] [-Property <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,10 +72,10 @@ Groups the files by each hour based on their CreationTime.
 ### Example 2: EXAMPLE 2
 
 ```
-Get-ChildItem $PSHOME | Group-TimeSpan -Property CreationTime -Hours 1 -Round
+Get-ChildItem $PSHOME | Group-TimeSpan -Property CreationTime -Days 7
 ```
 
-Groups the files by each hour based on their CreationTime and rounds to the top of the hour.
+Groups the files by 7 days based on their CreationTime.
 
 
 
@@ -115,6 +115,24 @@ Accepted values:
 Required: True (Hours) False (None)
 Position: Named
 Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+DontShow: False
+```
+
+### -IncludeAllTimes
+
+{{ Fill IncludeAllTimes Description }}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+Accepted values: 
+
+Required: True (None) False (All)
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 DontShow: False
@@ -207,25 +225,6 @@ Accepted values:
 Required: True (None) False (All)
 Position: Named
 Default value: 
-Accept pipeline input: False
-Accept wildcard characters: False
-DontShow: False
-```
-
-### -Round
-
-Specifies to round the date to the top of the day, hour, or minute.
-Only used with Days, Hours, Minutes, and Seconds parameters
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: Seconds, Minutes, Hours, Days
-Aliases: 
-Accepted values: 
-
-Required: True (None) False (Seconds, Minutes, Hours, Days)
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 DontShow: False

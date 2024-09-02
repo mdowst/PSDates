@@ -74,25 +74,6 @@ Accept wildcard characters: False
 DontShow: False
 ```
 
-### -TimeSpanGroupInfo
-
-Specifies the input objects that represent grouped time spans.
-This parameter accepts pipeline input and is mandatory.
-
-```yaml
-Type: TimeSpanGroupInfo[]
-Parameter Sets: (All)
-Aliases: 
-Accepted values: 
-
-Required: True (All) False (None)
-Position: 0
-Default value: 
-Accept pipeline input: True
-Accept wildcard characters: False
-DontShow: False
-```
-
 ### -Maximum
 
 Switch parameter that, when specified, calculates the maximum value of the specified property across all input objects.
@@ -184,6 +165,25 @@ Accept wildcard characters: False
 DontShow: False
 ```
 
+### -TimeSpanGroupInfo
+
+Specifies the input objects that represent grouped time spans.
+This parameter accepts pipeline input and is mandatory.
+
+```yaml
+Type: TimeSpanGroupInfo[]
+Parameter Sets: (All)
+Aliases: 
+Accepted values: 
+
+Required: True (All) False (None)
+Position: 0
+Default value: 
+Accept pipeline input: True
+Accept wildcard characters: False
+DontShow: False
+```
+
 
 ### CommonParameters
 
@@ -195,15 +195,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 The function accepts grouped time span objects from the pipeline.
 
 
-
-## OUTPUTS
+## OUTPUTS
 
 ### TimeSpanMeasureInfo[]
 Returns the calculated statistical value(s) based on the input and specified parameters.
 
 
-
-## NOTES
+## NOTES
 
 
 

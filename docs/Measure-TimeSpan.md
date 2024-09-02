@@ -195,13 +195,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 The function accepts grouped time span objects from the pipeline.
 
 
-## OUTPUTS
+
+## OUTPUTS
 
 ### TimeSpanMeasureInfo[]
 Returns the calculated statistical value(s) based on the input and specified parameters.
 
 
-## NOTES
+
+## NOTES
 
 
 

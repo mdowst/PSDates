@@ -50,7 +50,7 @@ jobs:
           path: Build
           pattern: my-build-*
           merge-multiple: true
-      - run: ls -R my-build
+      - run: ls
         
       - name: Install Modules
         shell: pwsh

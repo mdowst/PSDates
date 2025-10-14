@@ -71,7 +71,7 @@ Test-FridayThe13th -Date '2025-01-10'
     }
 
     $remaining = if ($next) { $next - $d } else { [TimeSpan]::Zero }
-    $msg = "No — $($d.ToString('yyyy-MM-dd')) is not Friday the 13th. Next is $($next.ToString('yyyy-MM-dd')) in $remaining."
+    $msg = "No — $($d.ToString('yyyy-MM-dd')) is not Friday the 13th. `nNext is $($next.ToString('yyyy-MM-dd')) in $(Format-TimeSpan $remaining)."
 
     [pscustomobject]@{
         PSTypeName      = 'PSDates.FridayThe13thResult'

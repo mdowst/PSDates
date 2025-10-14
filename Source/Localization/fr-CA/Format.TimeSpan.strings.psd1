@@ -4,7 +4,7 @@
     Day   = @{ One = '{0} jour';    Other = '{0} jours' }
     Hour  = @{ One = '{0} heure';   Other = '{0} heures' }
     Min   = @{ One = '{0} minute';  Other = '{0} minutes' }
-    Sec   = @{ One = '{0} seconde'; Other = '{0} secondes eh' }
+    Sec   = @{ One = '{0} seconde'; Other = '{0} secondes' }
 
     Separator      = ', '
     NegativeSign   = '-'              # or '−' (U+2212) if you prefer

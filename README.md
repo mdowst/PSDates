@@ -19,10 +19,12 @@ Install-Module PSDates
 | [ConvertTo-UnixTime](docs/ConvertTo-UnixTime.md) | Converts a datetime value to Unix Time |
 | [ConvertTo-WmiDateTime](docs/ConvertTo-WmiDateTime.md) | Converts a datetime value to a Wmi datetime string |
 | [Find-TimeZone](docs/Find-TimeZone.md) | Returns Time Zone information |
+| [Format-TimeSpan](docs/Format-TimeSpan.md) | {{ Fill in the Synopsis }} |
 | [Get-CronDescription](docs/Get-CronDescription.md) | Convert a cron expression into a human readable description |
 | [Get-CronNextOccurrence](docs/Get-CronNextOccurrence.md) | Get the next occurrence for a crontab |
 | [Get-DateExtended](docs/Get-DateExtended.md) | Gets additional extended date values that are not included by default with the Get-Date cmdlet |
 | [Get-DateFormat](docs/Get-DateFormat.md) | Returns common date and time formats |
+| [Get-DateSummary](docs/Get-DateSummary.md) | Summarizes a sequence of timestamps (earliest, latest, total span) and gap statistics. |
 | [Get-Easter](docs/Get-Easter.md) | This function offers a generic Easter computing method for any given year, using Western, Orthodox or Julian algorithms. |
 | [Get-PatchTuesday](docs/Get-PatchTuesday.md) | Returns the second Tuesday of the month |
 | [Get-SunTime](docs/Get-SunTime.md) | Find sunrise and sunset times for any location on planet Earth. |
@@ -30,4 +32,5 @@ Install-Module PSDates
 | [Measure-TimeSpan](docs/Measure-TimeSpan.md) | Measures statistical properties (such as sum, average, and maximum) of a specified property within grouped time spans. |
 | [New-Duration](docs/New-Duration.md) | Calculates the time span between two dates and returns the duration in the ISO 8601 format |
 | [Test-CrontabSchedule](docs/Test-CrontabSchedule.md) | Tests that a crontab string is valid |
+| [Test-FridayThe13th](docs/Test-FridayThe13th.md) | Checks if a date is Friday the 13th; if not, returns the next occurrence and the time remaining. |
 

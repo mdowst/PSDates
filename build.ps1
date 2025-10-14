@@ -30,10 +30,16 @@ Copy-Item -Path '.\Source\Resources\CronExpressionDescriptor.dll' -Destination $
 Copy-Item -Path '.\Source\Resources\ncrontab.3.3.0\lib\net35\NCrontab.dll' -Destination $ResourceFolder
 Copy-Item -Path '.\Source\Resources\ArgumentCompleters.ps1' -Destination $ResourceFolder
 
+Copy-Item -Path '.\Source\Localization\*' -Destination $psd1.DirectoryName -Recurse
+
 @'
 # Argument Completers
 $ArgumentCompleters = Join-Path $PSScriptRoot 'Resources\ArgumentCompleters.ps1'
 . $ArgumentCompleters
+
+# Load localized resources for the module
+$script:Localized = $null
+Import-LocalizedData -BaseDirectory $PSScriptRoot -BindingVariable Localized -FileName 'Format.TimeSpan.strings.psd1'
 '@ | Out-File -LiteralPath $psm1.FullName -Append
 
 #$nuspec = Copy-Item -Path .\Source\PSDates.nuspec -Destination $psd1.DirectoryName -PassThru

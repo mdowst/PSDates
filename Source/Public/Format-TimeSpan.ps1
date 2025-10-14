@@ -4,62 +4,80 @@ function Format-TimeSpan {
         [Parameter(Mandatory, ValueFromPipeline)]
         [TimeSpan]$TimeSpan,
 
-        # Include zero-valued trailing parts (e.g., "1 year, 0 months, 0 days, ...")
-        [switch]$IncludeZeros
+        [switch]$IncludeZeros,
+
+        # Let callers override culture without changing session UI culture
+        [System.Globalization.CultureInfo]$Culture
     )
 
     begin {
-        function Add-Part([int]$n, [string]$label) {
-            if ($n -gt 0 -or $IncludeZeros) {
-                "$n $label" + ($(if ($n -eq 1) { '' } else { 's' }))
+        function Get-Resource {
+            param([string]$FileName = 'Format.TimeSpan.strings.psd1',
+                [System.Globalization.CultureInfo]$Culture)
+            $loc = $null
+            if ($Culture) {
+                Import-LocalizedData -BaseDirectory $PSScriptRoot -UICulture $Culture.Name -BindingVariable loc -FileName $FileName -ErrorAction SilentlyContinue
             }
+            if (-not $loc) { $loc = $Localized } # fall back to module-level default
+            return $loc
+        }
+
+        function Select-Form {
+            param(
+                [int]$n,
+                [hashtable]$Forms
+            )
+            if ($Forms.ContainsKey('One') -and $n -eq 1) { $Forms.One } else { $Forms.Other }
+        }
+
+        function Part {
+            param(
+                [int]$n,
+                [hashtable]$Forms
+            )
+            if ($n -lt 0) { return $null }
+            $template = Select-Form -n $n -Forms $Forms
+            return ($template -f $n)   # <- apply format operator to the *result*
         }
     }
 
     process {
-        $sign = if ($TimeSpan.TotalSeconds -lt 0) { '-' } else { '' }
+        $L = Get-Resource -Culture $Culture
+
+        $sign = if ($TimeSpan.TotalSeconds -lt 0) { $L.NegativeSign } else { '' }
         $ts = $TimeSpan.Duration()
 
-        # Use a fixed anchor so month/year math respects calendar lengths.
+        # --- calendar-aware breakdown (your existing logic) ---
         $anchor = Get-Date '2000-01-01T00:00:00Z'
         $cursor = $anchor
         $end = $anchor + $ts
 
-        # Years
-        $years = ($end.Year - $cursor.Year)
-        $cursor = $cursor.AddYears($years)
+        $years = ($end.Year - $cursor.Year); $cursor = $cursor.AddYears($years)
         if ($cursor -gt $end) { $years--; $cursor = $cursor.AddYears(-1) }
 
-        # Months
         $months = 0
-        while ($cursor.AddMonths(1) -le $end) {
-            $months++
-            $cursor = $cursor.AddMonths(1)
-        }
+        while ($cursor.AddMonths(1) -le $end) { $months++; $cursor = $cursor.AddMonths(1) }
 
-        # Remaining as a TimeSpan
         $remaining = $end - $cursor
         $days = $remaining.Days
         $hours = $remaining.Hours
         $minutes = $remaining.Minutes
         $seconds = [int][math]::Round($remaining.Seconds + $remaining.Milliseconds / 1000, 0)
 
-        # Carry rounding if seconds hit 60
         if ($seconds -ge 60) { $seconds -= 60; $minutes++ }
         if ($minutes -ge 60) { $minutes -= 60; $hours++ }
         if ($hours -ge 24) { $hours -= 24; $days++ }
 
         $parts = @()
-        $parts += Add-Part $years   'year'
-        $parts += Add-Part $months  'month'
-        $parts += Add-Part $days    'day'
-        $parts += Add-Part $hours   'hour'
-        $parts += Add-Part $minutes 'minute'
-        $parts += Add-Part $seconds 'second'
+        if ($IncludeZeros -or $years) { $parts += Part $years   $L.Year }
+        if ($IncludeZeros -or $months) { $parts += Part $months  $L.Month }
+        if ($IncludeZeros -or $days) { $parts += Part $days    $L.Day }
+        if ($IncludeZeros -or $hours) { $parts += Part $hours   $L.Hour }
+        if ($IncludeZeros -or $minutes) { $parts += Part $minutes $L.Min }
+        if ($IncludeZeros -or $seconds) { $parts += Part $seconds $L.Sec }
 
-        if (-not $IncludeZeros) { $parts = $parts | Where-Object { $_ -and $_ -notmatch '^\s*0 ' } }
-        if (-not $parts) { $parts = @('0 seconds') }
+        if (-not $parts -or ($parts -join '') -eq '') { return $L.ZeroFallback }
 
-        ($sign + ($parts -join ', '))
+        $sign + (($parts | Where-Object { $_ }) -join $L.Separator)
     }
 }

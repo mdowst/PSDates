@@ -126,7 +126,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-{{ Fill in the Notes }}
+> **Notes**
+> - The `Format-TimeSpan` cmdlet formats a .NET `TimeSpan` object into a human-readable string, optionally using a specified culture.
+> - If the `IncludeZeros` switch is used, zero-value components (such as days, hours, minutes, or seconds) will be included in the output; otherwise, they may be omitted.
+> - The `Culture` parameter must be a valid .NET `CultureInfo` object; if not specified, the current culture is used.
+> - The cmdlet does not support formatting negative `TimeSpan` values; negative values may result in unexpected output.
+> - Large `TimeSpan` values (e.g., spanning multiple days) will be formatted according to the culture's conventions.
+> - The cmdlet requires a valid `TimeSpan` object as input; passing other types will result in an error.
 
 ## RELATED LINKS
 

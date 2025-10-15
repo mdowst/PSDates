@@ -37,7 +37,7 @@ This example formats a TimeSpan of 2 hours, 30 minutes, and 15 seconds, includin
 
 ### -Culture
 
-{{ Fill Culture Description }}
+Specifies the culture to use for formatting the output. You can provide a `CultureInfo` object or a culture name string (such as `"en-US"`, `"fr-FR"`, or `"de-DE"`). This determines the language and formatting conventions used for the output. For example, to use French formatting, specify `-Culture "fr-FR"`. If not specified, the current culture is used.
 
 ```yaml
 Type: CultureInfo

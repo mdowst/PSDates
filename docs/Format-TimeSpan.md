@@ -21,7 +21,7 @@ Format-TimeSpan [-TimeSpan] <TimeSpan> [[-Culture <CultureInfo>]] [-IncludeZeros
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+The `Format-TimeSpan` cmdlet formats a .NET `TimeSpan` object into a human-readable string representation. It allows you to customize the output based on culture settings, optionally include zero-value time components, and control progress reporting. This cmdlet is useful for displaying durations in scripts, logs, or user interfaces in a clear and localized format. You can specify the culture for formatting, choose whether to display components with zero values (such as hours or minutes), and adjust progress action preferences. The cmdlet accepts a `TimeSpan` object as input and outputs a formatted string suitable for display or further processing.
 
 ## EXAMPLES
 

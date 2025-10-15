@@ -28,10 +28,10 @@ The `Format-TimeSpan` cmdlet formats a .NET `TimeSpan` object into a human-reada
 ### Example 1: Example 1
 
 ```
-PS C:\> {{ Add example code here }}
-```
+PS C:\> Format-TimeSpan -TimeSpan (New-TimeSpan -Hours 2 -Minutes 30 -Seconds 15) -IncludeZeros
+2 hours, 30 minutes, 15 seconds
 
-{{ Add example description here }}
+This example formats a TimeSpan of 2 hours, 30 minutes, and 15 seconds, including zero-value components in the output.
 
 ## PARAMETERS
 

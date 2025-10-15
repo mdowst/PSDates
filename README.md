@@ -19,7 +19,7 @@ Install-Module PSDates
 | [ConvertTo-UnixTime](docs/ConvertTo-UnixTime.md) | Converts a datetime value to Unix Time |
 | [ConvertTo-WmiDateTime](docs/ConvertTo-WmiDateTime.md) | Converts a datetime value to a Wmi datetime string |
 | [Find-TimeZone](docs/Find-TimeZone.md) | Returns Time Zone information |
-| [Format-TimeSpan](docs/Format-TimeSpan.md) | {{ Fill in the Synopsis }} |
+| [Format-TimeSpan](docs/Format-TimeSpan.md) | Formats a TimeSpan object into a human-readable string. |
 | [Get-CronDescription](docs/Get-CronDescription.md) | Convert a cron expression into a human readable description |
 | [Get-CronNextOccurrence](docs/Get-CronNextOccurrence.md) | Get the next occurrence for a crontab |
 | [Get-DateExtended](docs/Get-DateExtended.md) | Gets additional extended date values that are not included by default with the Get-Date cmdlet |

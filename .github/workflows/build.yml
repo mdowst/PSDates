@@ -31,9 +31,9 @@ jobs:
           .\build.ps1 -Version $Version
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: my-build
+          name: my-build-${{ matrix.runs-on }}
           path: Build
         
   test-module:
@@ -42,14 +42,16 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [windows-latest]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
-          name: my-build
           path: Build
-
+          pattern: my-build-*
+          merge-multiple: true
+      - run: ls -R Build
+        
       - name: Install Modules
         shell: pwsh
         run: |

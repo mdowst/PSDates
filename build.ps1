@@ -30,10 +30,39 @@ Copy-Item -Path '.\Source\Resources\CronExpressionDescriptor.dll' -Destination $
 Copy-Item -Path '.\Source\Resources\ncrontab.3.3.0\lib\net35\NCrontab.dll' -Destination $ResourceFolder
 Copy-Item -Path '.\Source\Resources\ArgumentCompleters.ps1' -Destination $ResourceFolder
 
+Copy-Item -Path '.\Source\Localization\*' -Destination $psd1.DirectoryName -Recurse
+
 @'
 # Argument Completers
 $ArgumentCompleters = Join-Path $PSScriptRoot 'Resources\ArgumentCompleters.ps1'
 . $ArgumentCompleters
+
+# Load localized resources for the module with fallback
+$script:Localized = $null
+try {
+    Import-LocalizedData -BaseDirectory $PSScriptRoot -BindingVariable Localized -FileName 'Format.TimeSpan.strings.psd1' -ErrorAction Stop
+}
+catch {
+    # Fallback to en-US if localization fails
+    try {
+        Import-LocalizedData -BaseDirectory $PSScriptRoot -UICulture 'en-US' -BindingVariable Localized -FileName 'Format.TimeSpan.strings.psd1' -ErrorAction Stop
+    }
+    catch {
+        # Ultimate fallback: define basic localization in-line
+        $script:Localized = @{
+            Year  = @{ One = '{0} year';   Other = '{0} years' }
+            Month = @{ One = '{0} month';  Other = '{0} months' }
+            Day   = @{ One = '{0} day';    Other = '{0} days' }
+            Hour  = @{ One = '{0} hour';   Other = '{0} hours' }
+            Min   = @{ One = '{0} minute'; Other = '{0} minutes' }
+            Sec   = @{ One = '{0} second'; Other = '{0} seconds' }
+            Separator      = ', '
+            NegativeSign   = '-'
+            ZeroFallback   = '0 seconds'
+            IncludeZerosOn = '{0} {1}'
+        }
+    }
+}
 '@ | Out-File -LiteralPath $psm1.FullName -Append
 
 #$nuspec = Copy-Item -Path .\Source\PSDates.nuspec -Destination $psd1.DirectoryName -PassThru

@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Formats TimeSpan objects into human-readable, localized text.
 
 ## SYNTAX
 
@@ -117,12 +117,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### None
 
 
-## OUTPUTS
+
+## OUTPUTS
 
 ### System.Object
 
 
-## NOTES
+
+## NOTES
 
 {{ Fill in the Notes }}
 

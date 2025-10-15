@@ -91,7 +91,7 @@ DontShow: False
 
 ### -TimeSpan
 
-{{ Fill TimeSpan Description }}
+Specifies the TimeSpan object to be formatted. Provide the TimeSpan value that you want to convert to a formatted string.
 
 ```yaml
 Type: TimeSpan
